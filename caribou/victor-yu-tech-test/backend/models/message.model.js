@@ -6,7 +6,7 @@ const messageSchema = new Schema(
   {
     users: {
       type: [],
-      require: true,
+      required: true,
     },
     messageHistory: {
       type: [],
