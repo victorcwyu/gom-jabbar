@@ -36,13 +36,13 @@ connection.once("open", () => {
 });
 
 // loads the routes from respective files
+const authorizationRoute = require("./routes/authorization");
 const usersRoute = require("./routes/users");
-const messagesRoute = require("./routes/messages");
 const reportsRoute = require("./routes/reports");
 
 // adds the routers as middleware
+app.use("/authorization", authorizationRoute);
 app.use("/users", usersRoute);
-app.use("/messages", messagesRoute);
 app.use("/reports", reportsRoute);
 
 app.listen(port, () => {
