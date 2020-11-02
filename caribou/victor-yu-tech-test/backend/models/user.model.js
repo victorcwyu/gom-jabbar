@@ -8,3 +8,7 @@ const userSchema = new Schema({
   password: { type: String, required: true },
   contacts: { type: [] },
 });
+
+const User = mongoose.model("User", userSchema);
+
+module.exports = User;

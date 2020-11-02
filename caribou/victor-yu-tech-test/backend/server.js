@@ -35,6 +35,16 @@ connection.once("open", () => {
   console.log("MongoDB database connection establishment success");
 });
 
+// loads the routes from respective files
+const usersRoute = require("./routes/users");
+const messagesRoute = require("./routes/messages");
+const reportsRoute = require("./routes/reports");
+
+// adds the routers as middleware
+app.use("/users", usersRoute);
+app.use("/messages", messagesRoute);
+app.use("/reports", reportsRoute);
+
 app.listen(port, () => {
   console.log(`Listening on port: ${port}`);
 });
