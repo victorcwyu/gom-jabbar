@@ -17,4 +17,10 @@ router.post(
   userController.getUserMessages
 );
 
+router.post(
+  "/updateUserMessages",
+  isAuthenticated,
+  userController.updateUserMessages
+);
+
 module.exports = router;

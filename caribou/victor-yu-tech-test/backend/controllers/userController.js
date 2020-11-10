@@ -138,3 +138,22 @@ exports.getUserMessages = async (req, res, next) => {
     next(err);
   }
 };
+
+exports.updateUserMessages = async (req, res) => {
+  try {
+    const { newMessage, messagesId } = req.body;
+    const messagesQuery = { _id: messagesId };
+    // Retrieves the document associated with the 2 users
+    const messages = await Message.findById(messagesQuery);
+    // Spreads the messageHistory array and adds the new message
+    messages.messageHistory = [...messages.messageHistory, newMessage];
+    // Saves and updates database
+    const savedMessages = await messages.save();
+    res.status(200).json({ savedMessages: savedMessages });
+  } catch (err) {
+    if (!err.statusCode) {
+      err.statusCode = 500;
+    }
+    next(err);
+  }
+};
