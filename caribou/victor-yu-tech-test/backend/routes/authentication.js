@@ -11,4 +11,9 @@ router.post(
 
 router.post("/login", authenticationController.login);
 
+router.post(
+  "/authenticationTokenVerification",
+  authenticationController.authenticationTokenVerification
+);
+
 module.exports = router;
