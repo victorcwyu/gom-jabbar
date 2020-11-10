@@ -36,14 +36,24 @@ connection.once("open", () => {
 });
 
 // loads the routes from respective files
-const authorizationRoute = require("./routes/authorization");
-const usersRoute = require("./routes/users");
-const reportsRoute = require("./routes/reports");
+const authenticationRoute = require("./routes/authentication");
 
 // adds the routers as middleware
-app.use("/authorization", authorizationRoute);
-app.use("/users", usersRoute);
-app.use("/reports", reportsRoute);
+app.use("/authentication", authenticationRoute);
+
+app.use((error, req, res, next) => {
+  if (res.headersSent) {
+    return next(error);
+  }
+  console.log(error);
+  const status = error.statusCode || 500;
+  const message = error.message;
+  const data = error.data;
+  res.status(status).json({
+    message: message,
+    data: data,
+  });
+});
 
 app.listen(port, () => {
   console.log(`Listening on port: ${port}`);

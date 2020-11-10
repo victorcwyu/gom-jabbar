@@ -2,20 +2,20 @@ const bcrypt = require("bcrypt");
 const { body, validationResult } = require("express-validator");
 const jwt = require("jsonwebtoken");
 
-const User = require("../models/user");
+const jwtKey = process.env.JWT_SECRET_KEY;
 
-const validateUserInfo = () => {
-  return [
-    // username must be at least 3 chars long
-    body("username").trim().isLength({ min: 3 }),
-    // confirms email is an email and canonicalizes email address
-    body("email").trim().isEmail().normalizeEmail(),
-    // password must be at least 3 chars long
-    body("password").trim().isLength({ min: 3 }),
-    // confirm password must is at least 3 chars long
-    body("confirmPassword").trim().isLength({ min: 3 }),
-  ];
-};
+const User = require("../models/user.model.js");
+
+const validateUserInfo = [
+  // username must be at least 3 chars long
+  body("username").trim().isLength({ min: 3 }),
+  // confirms email is an email and canonicalizes email address
+  body("email").trim().isEmail().normalizeEmail(),
+  // password must be at least 3 chars long
+  body("password").trim().isLength({ min: 3 }),
+  // confirm password must is at least 3 chars long
+  body("confirmPassword").trim().isLength({ min: 3 }),
+];
 
 const createUser = async (req, res, next) => {
   // Finds validation errors in request and wraps them in an object with handy functions
@@ -23,8 +23,8 @@ const createUser = async (req, res, next) => {
 
   try {
     if (!errors.isEmpty()) {
-      const error = new Error("User validation failed!");
-      error.statusCode = 400;
+      const error = new Error("Validation of user information failed!");
+      error.statusCode = 422;
       throw error;
     }
     const { username, email, password, confirmPassword } = req.body;
@@ -49,11 +49,11 @@ const createUser = async (req, res, next) => {
     res
       .status(201)
       .json({ msg: "User created, please login!", user: savedUser });
-  } catch (err) {
-    if (!err.statusCode) {
-      err.statusCode = 500;
+  } catch (error) {
+    if (!error.statusCode) {
+      error.statusCode = 500;
     }
-    next(err);
+    next(error);
   }
 };
 
