@@ -38,10 +38,12 @@ connection.once("open", () => {
 // loads the routes from respective files
 const authenticationRoutes = require("./routes/authentication");
 const userRoutes = require("./routes/user");
+const reportsRoutes = require("./routes/reports");
 
 // adds the routers as middleware
 app.use("/authentication", authenticationRoutes);
 app.use(userRoutes);
+app.use("/reports", reportsRoutes);
 
 // error handling middleware
 app.use((error, req, res, next) => {

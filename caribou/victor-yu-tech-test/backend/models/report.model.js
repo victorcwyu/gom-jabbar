@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 const reportSchema = new Schema(
   {
     reporter: {
-      type: string,
+      type: String,
       required: true,
     },
     location: {
