@@ -1,9 +1,7 @@
 const bcrypt = require("bcrypt");
 const { body, validationResult } = require("express-validator");
 const jwt = require("jsonwebtoken");
-
 const jwtKey = process.env.JWT_SECRET_KEY;
-
 const User = require("../models/user.model.js");
 
 const validateUserInfo = [
@@ -46,9 +44,7 @@ const createUser = async (req, res, next) => {
       password: hashedPassword,
     });
     const savedUser = await user.save();
-    res
-      .status(201)
-      .json({ msg: "User created, please login!", user: savedUser });
+    res.status(201).json({ msg: "User created, please login!" });
   } catch (error) {
     if (!error.statusCode) {
       error.statusCode = 500;
@@ -57,4 +53,32 @@ const createUser = async (req, res, next) => {
   }
 };
 
-module.exports = { validateUserInfo, createUser };
+const login = async (req, res, next) => {
+  try {
+    const { username, password } = req.body;
+    const user = await User.findOne({ username: username });
+    if (!user) {
+      const error = new Error("The username is not valid!");
+      error.statusCode = 401;
+      throw error;
+    }
+    const validPassword = await bcrypt.compare(password, user.password);
+    if (!validPassword) {
+      const error = new Error("The password is not valid!");
+      error.statusCode = 401;
+      throw error;
+    }
+    const authenticationToken = jwt.sign(
+      { id: user._id },
+      process.env.JWT_SECRET_KEY
+    );
+    res.status(200).json({ authenticationToken });
+  } catch (err) {
+    if (!err.statusCode) {
+      err.statusCode = 500;
+    }
+    next(err);
+  }
+};
+
+module.exports = { validateUserInfo, createUser, login };

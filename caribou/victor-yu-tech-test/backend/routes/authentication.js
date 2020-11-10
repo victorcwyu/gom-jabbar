@@ -9,4 +9,6 @@ router.post(
   authenticationController.createUser
 );
 
+router.post("/login", authenticationController.login);
+
 module.exports = router;
