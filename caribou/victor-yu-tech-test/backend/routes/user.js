@@ -7,4 +7,6 @@ router.post("/getCurrentUser", isAuthenticated, userController.getCurrentUser);
 
 router.post("/findUser", isAuthenticated, userController.findUser);
 
+router.post("/addContact", isAuthenticated, userController.addContact);
+
 module.exports = router;

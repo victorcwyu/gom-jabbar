@@ -31,7 +31,7 @@ exports.findUser = async (req, res, next) => {
       error.statusCode = 400;
       throw error;
     }
-    const alreadyInContacts = currentUser.contact.find((i) => {
+    const alreadyInContacts = currentUser.contacts.find((i) => {
       return i.username === username;
     });
     if (alreadyInContacts) {
@@ -53,5 +53,28 @@ exports.findUser = async (req, res, next) => {
       error.statusCode = 500;
     }
     next(error);
+  }
+};
+
+exports.addContact = async (req, res, next) => {
+  try {
+    const { userData } = req.body;
+    const currentUser = await User.findById(req.user);
+    const alreadyInContacts = currentUser.contacts.find((i) => {
+      return i.username === userData.username;
+    });
+    if (alreadyInContacts) {
+      const error = new Error("This user is already in your contacts.");
+      error.statusCode = 400;
+      throw error;
+    }
+    currentUser.contacts.push(userData);
+    currentUser.save();
+    res.status(201).json({ userData });
+  } catch (err) {
+    if (!err.statusCode) {
+      err.statusCode = 500;
+    }
+    next(err);
   }
 };

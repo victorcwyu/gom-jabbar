@@ -3,7 +3,6 @@ const jwtKey = process.env.JWT_SECRET_KEY;
 
 const isAuthenticated = (req, res, next) => {
   try {
-    console.log(req.header("Authentication-Token"));
     const authenticationToken = req.header("Authentication-Token");
     if (!authenticationToken) {
       res
