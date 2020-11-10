@@ -36,11 +36,12 @@ connection.once("open", () => {
 });
 
 // loads the routes from respective files
-const authenticationRoute = require("./routes/authentication");
+const authenticationRoutes = require("./routes/authentication");
 
 // adds the routers as middleware
-app.use("/authentication", authenticationRoute);
+app.use("/authentication", authenticationRoutes);
 
+// error handling middleware
 app.use((error, req, res, next) => {
   if (res.headersSent) {
     return next(error);
