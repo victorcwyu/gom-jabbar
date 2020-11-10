@@ -1,8 +1,8 @@
 const bcrypt = require("bcrypt");
 const { body, validationResult } = require("express-validator");
+const User = require("../models/user.model.js");
 const jwt = require("jsonwebtoken");
 const jwtKey = process.env.JWT_SECRET_KEY;
-const User = require("../models/user.model.js");
 
 exports.validateUserInfo = [
   // username must be at least 3 chars long
