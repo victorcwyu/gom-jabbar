@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 const jwtKey = process.env.JWT_SECRET_KEY;
 const User = require("../models/user.model.js");
 
-const validateUserInfo = [
+exports.validateUserInfo = [
   // username must be at least 3 chars long
   body("username").trim().isLength({ min: 3 }),
   // confirms email is an email and canonicalizes email address
@@ -15,7 +15,7 @@ const validateUserInfo = [
   body("confirmPassword").trim().isLength({ min: 3 }),
 ];
 
-const createUser = async (req, res, next) => {
+exports.createUser = async (req, res, next) => {
   // Finds validation errors in request and wraps them in an object with handy functions
   const errors = validationResult(req);
 
@@ -53,7 +53,7 @@ const createUser = async (req, res, next) => {
   }
 };
 
-const login = async (req, res, next) => {
+exports.login = async (req, res, next) => {
   try {
     const { username, password } = req.body;
     const user = await User.findOne({ username: username });
@@ -68,10 +68,7 @@ const login = async (req, res, next) => {
       error.statusCode = 401;
       throw error;
     }
-    const authenticationToken = jwt.sign(
-      { id: user._id },
-      process.env.JWT_SECRET_KEY
-    );
+    const authenticationToken = jwt.sign({ id: user._id }, jwtKey);
     res.status(200).json({ authenticationToken });
   } catch (err) {
     if (!err.statusCode) {
@@ -80,5 +77,3 @@ const login = async (req, res, next) => {
     next(err);
   }
 };
-
-module.exports = { validateUserInfo, createUser, login };
