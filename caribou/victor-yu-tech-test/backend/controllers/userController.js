@@ -96,3 +96,45 @@ exports.removeContact = async (req, res, next) => {
     next(err);
   }
 };
+
+exports.getUserMessages = async (req, res, next) => {
+  try {
+    const { userId, contactId } = req.body;
+    const retrievedMessages = await Message.find();
+    let userMessageHistory;
+    // Case for very first document added to MongoDB collection of messages
+    if (!retrievedMessages || retrievedMessages.length < 1) {
+      const messageInitialization = new Message({
+        users: [userId, contactId],
+        messages: [],
+      });
+      userMessageHistory = await messageInitialization.save();
+      res.status(200).json({ userMessageHistory: userMessageHistory });
+      return;
+    }
+    // Filters for the desired document associated with the 2 users
+    const filteredMessages = retrievedMessages.filter((i) => {
+      if (i.users.includes(userId) && i.users.includes(contactId)) {
+        return i;
+      }
+    });
+    // Case where there are stored documents, but not between the 2 users
+    if (!filteredMessages.length) {
+      const messageInitialization = new Message({
+        users: [userId, contactId],
+        messages: [],
+      });
+      userMessageHistory = await messageInitialization.save();
+    }
+    // Retrieves the document associated with the 2 users
+    if (filteredMessages.length) {
+      userMessageHistory = filteredMessages[0];
+    }
+    res.status(200).json({ userMessageHistory: userMessageHistory });
+  } catch (err) {
+    if (!err.statusCode) {
+      err.statusCode = 500;
+    }
+    next(err);
+  }
+};

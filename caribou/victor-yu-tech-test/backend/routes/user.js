@@ -11,4 +11,10 @@ router.post("/addContact", isAuthenticated, userController.addContact);
 
 router.delete("/removeContact", isAuthenticated, userController.removeContact);
 
+router.post(
+  "/getUserMessages",
+  isAuthenticated,
+  userController.getUserMessages
+);
+
 module.exports = router;
