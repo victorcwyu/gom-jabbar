@@ -9,4 +9,6 @@ router.post("/findUser", isAuthenticated, userController.findUser);
 
 router.post("/addContact", isAuthenticated, userController.addContact);
 
+router.delete("/removeContact", isAuthenticated, userController.removeContact);
+
 module.exports = router;
