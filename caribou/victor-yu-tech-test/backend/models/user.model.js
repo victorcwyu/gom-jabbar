@@ -7,6 +7,7 @@ const userSchema = new Schema({
   username: { type: String, required: true, unique: true },
   password: { type: String, required: true },
   contacts: { type: [] },
+  reports: { type: [] },
 });
 
 const User = mongoose.model("User", userSchema);
