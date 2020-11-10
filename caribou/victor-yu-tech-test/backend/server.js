@@ -41,7 +41,7 @@ const userRoutes = require("./routes/user");
 
 // adds the routers as middleware
 app.use("/authentication", authenticationRoutes);
-app.use("/user", userRoutes);
+app.use(userRoutes);
 
 // error handling middleware
 app.use((error, req, res, next) => {

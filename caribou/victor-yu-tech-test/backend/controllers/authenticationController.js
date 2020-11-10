@@ -72,37 +72,6 @@ exports.login = async (req, res, next) => {
     }
     const authenticationToken = jwt.sign({ id: user._id }, jwtKey);
     res.status(200).json({ authenticationToken });
-  } catch (errorr) {
-    if (!errorr.statusCode) {
-      errorr.statusCode = 500;
-    }
-    next(errorr);
-  }
-};
-
-exports.authenticationTokenVerification = async (req, res, next) => {
-  try {
-    const authenticationToken = req.header("Authentication-Token");
-    if (!authenticationToken) {
-      const error = new Error("No authentication token was found!");
-      error.statusCode = 400;
-      throw error;
-    }
-    const verifiedAuthenticationToken = jwt.verify(authenticationToken, jwtKey);
-    if (!verifiedAuthenticationToken) {
-      const error = new Error("Authentication token could not be verified!");
-      error.statusCode = 400;
-      throw error;
-    }
-    const user = await User.findById(verifiedAuthenticationToken.id);
-    if (!user) {
-      const error = new Error(
-        "No user was found with the corresponding authentication token!"
-      );
-      error.statusCode = 400;
-      throw error;
-    }
-    res.status(200).json({ msg: "Authentication token is valid!" });
   } catch (error) {
     if (!error.statusCode) {
       error.statusCode = 500;
