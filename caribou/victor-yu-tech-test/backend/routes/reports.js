@@ -5,4 +5,6 @@ const reportController = require("../controllers/reportController");
 
 router.post("/addReport", isAuthenticated, reportController.addReport);
 
+router.get("/getReports", isAuthenticated, reportController.getReports);
+
 module.exports = router;
