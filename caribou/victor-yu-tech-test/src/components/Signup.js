@@ -15,6 +15,7 @@ export default function Signup() {
       <form autoComplete="off">
         <input
           id="username"
+          placeholder="username"
           type="text"
           value={userInfo.username}
           onChange={(e) =>
@@ -23,12 +24,14 @@ export default function Signup() {
         />
         <input
           id="email"
+          placeholder="email"
           type="text"
           value={userInfo.email}
           onChange={(e) => setUserInfo({ ...userInfo, email: e.target.value })}
         />
         <input
           id="password"
+          placeholder="password"
           type="text"
           value={userInfo.password}
           onChange={(e) =>
@@ -36,7 +39,8 @@ export default function Signup() {
           }
         />
         <input
-          id="username"
+          id="confirmPassword"
+          placeholder="confirm password"
           type="text"
           value={userInfo.confirmPassword}
           onChange={(e) =>
