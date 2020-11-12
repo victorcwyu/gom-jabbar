@@ -1,5 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
+import UserContext from "../context/UserContext";
 
 export default function Signup() {
-  return <h1>Signup</h1>;
+  const { userData, setUserData } = useContext(UserContext);
+
+  return <div></div>;
 }
