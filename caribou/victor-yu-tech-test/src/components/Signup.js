@@ -1,8 +1,49 @@
-import React, { useContext } from "react";
+import React, { useState, useContext } from "react";
 import UserContext from "../context/UserContext";
 
 export default function Signup() {
+  const [userInfo, setUserInfo] = useState({
+    username: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
   const { userData, setUserData } = useContext(UserContext);
 
-  return <div></div>;
+  return (
+    <div>
+      <form autoComplete="off">
+        <input
+          id="username"
+          type="text"
+          value={userInfo.username}
+          onChange={(e) =>
+            setUserInfo({ ...userInfo, username: e.target.value })
+          }
+        />
+        <input
+          id="email"
+          type="text"
+          value={userInfo.email}
+          onChange={(e) => setUserInfo({ ...userInfo, email: e.target.value })}
+        />
+        <input
+          id="password"
+          type="text"
+          value={userInfo.password}
+          onChange={(e) =>
+            setUserInfo({ ...userInfo, password: e.target.value })
+          }
+        />
+        <input
+          id="username"
+          type="text"
+          value={userInfo.confirmPassword}
+          onChange={(e) =>
+            setUserInfo({ ...userInfo, confirmPassword: e.target.value })
+          }
+        />
+      </form>
+    </div>
+  );
 }
