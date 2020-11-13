@@ -46,8 +46,10 @@ function App() {
     <Router>
       <UserContext.Provider value={value}>
         <Switch>
-          {!userData.token && <Route path="/" exact component={Landing} />}
-          {userData.token && <Route path="/" exact component={Home} />}
+          {userData.token === null && (
+            <Route path="/" exact component={Landing} />
+          )}
+          {userData.token !== null && <Route path="/" exact component={Home} />}
           <Route path="/signup" exact component={Signup} />
           <Route path="/login" exact component={Login} />
         </Switch>

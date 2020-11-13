@@ -23,7 +23,11 @@ export default function Login() {
         login.data.authenticationToken
       );
       const token = localStorage.getItem("authentication-token");
-      setUserData({ ...userData, token: token });
+      setUserData({
+        ...userData,
+        token: token,
+        user: { username: userInfo.username },
+      });
       history.push("/");
     } catch (err) {
       console.error(err);
