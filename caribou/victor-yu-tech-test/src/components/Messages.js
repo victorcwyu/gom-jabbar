@@ -1,12 +1,13 @@
 import React, { useState, useContext } from "react";
+import UserContext from "../context/UserContext";
 import axios from "axios";
 
 export default function Messages() {
+  const { userData, setUserData } = useContext(UserContext);
   const [input, setInput] = useState("");
   const [searchData, setSearchData] = useState(null);
 
   const handleSearch = async (e) => {
-    console.log(input);
     e.preventDefault();
     const token = localStorage.getItem("authentication-token");
     try {
@@ -28,18 +29,50 @@ export default function Messages() {
     }
   };
 
+  const handleAddContact = async (e) => {
+    e.preventDefault();
+    const token = localStorage.getItem("authentication-token");
+    try {
+      const contactData = await axios.post(
+        "http://localhost:5000/addContact",
+        { contactData: searchData },
+        {
+          headers: {
+            "Authentication-Token": token,
+          },
+        }
+      );
+      const updatedContacts = [
+        ...userData.user.contacts,
+        contactData.data.userData,
+      ];
+      const updatedUserData = { ...userData.user, contacts: updatedContacts };
+      setUserData({ ...userData, user: updatedUserData });
+      setSearchData(null);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   return (
     <>
       <div>
-        <h2>Add a Contact</h2>
+        <h2>Add Contact</h2>
         <input
           type="text"
           placeholder="username"
           value={input}
           onChange={(e) => setInput(e.target.value)}
         />
-        <button onClick={handleSearch}>Search</button>
+        {!searchData && <button onClick={handleSearch}>Search</button>}
       </div>
+      {searchData && (
+        <div>
+          <button onClick={handleAddContact}>
+            Add {searchData.username} to your Contacts
+          </button>
+        </div>
+      )}
     </>
   );
 }
