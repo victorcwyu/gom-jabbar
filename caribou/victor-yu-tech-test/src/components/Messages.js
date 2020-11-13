@@ -49,6 +49,7 @@ export default function Messages() {
       const updatedUserData = { ...userData.user, contacts: updatedContacts };
       setUserData({ ...userData, user: updatedUserData });
       setSearchData(null);
+      setInput("");
     } catch (err) {
       console.error(err);
     }
