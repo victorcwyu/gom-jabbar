@@ -45,7 +45,7 @@ export default function Contacts() {
       );
       const updatedContacts = [
         ...userData.user.contacts,
-        contactData.data.userData,
+        contactData.data.contactData,
       ];
       const updatedUserData = { ...userData.user, contacts: updatedContacts };
       setUserData({ ...userData, user: updatedUserData });
@@ -68,10 +68,12 @@ export default function Contacts() {
 
   return (
     <>
-      <div>
-        <h1>Contacts</h1>
-        <ul>{contacts}</ul>
-      </div>
+      {userData.user.contacts[0] !== undefined && (
+        <div>
+          <h1>Contacts</h1>
+          <ul>{contacts}</ul>
+        </div>
+      )}
       <div>
         <h2>Search Users</h2>
         <input
@@ -92,8 +94,3 @@ export default function Contacts() {
     </>
   );
 }
-
-// <div>
-//   <h2>Contacts</h2>
-//   <ul>{contacts}</ul>
-// </div>;
