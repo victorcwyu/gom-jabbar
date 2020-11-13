@@ -23,10 +23,19 @@ export default function Login() {
         login.data.authenticationToken
       );
       const token = localStorage.getItem("authentication-token");
+      const getCurrentUser = await axios.post(
+        "http://localhost:5000/getCurrentUser",
+        null,
+        {
+          headers: {
+            "Authentication-Token": token,
+          },
+        }
+      );
       setUserData({
         ...userData,
         token: token,
-        user: { username: userInfo.username },
+        user: getCurrentUser.data,
       });
       history.push("/");
     } catch (err) {

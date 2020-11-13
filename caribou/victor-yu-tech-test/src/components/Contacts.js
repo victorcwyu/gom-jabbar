@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import UserContext from "../context/UserContext";
 import axios from "axios";
+import ContactInformation from "./ContactInformation";
 
 export default function Contacts() {
   const { userData, setUserData } = useContext(UserContext);
@@ -55,10 +56,24 @@ export default function Contacts() {
     }
   };
 
+  const contacts = userData.user.contacts.map((contact, index) => {
+    return (
+      <ContactInformation
+        key={index}
+        contactId={contact.id}
+        contactName={contact.username}
+      />
+    );
+  });
+
   return (
     <>
       <div>
-        <h2>Add Contact</h2>
+        <h1>Contacts</h1>
+        <ul>{contacts}</ul>
+      </div>
+      <div>
+        <h2>Search Users</h2>
         <input
           type="text"
           placeholder="username"
@@ -77,3 +92,8 @@ export default function Contacts() {
     </>
   );
 }
+
+// <div>
+//   <h2>Contacts</h2>
+//   <ul>{contacts}</ul>
+// </div>;
