@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import UserContext from "../context/UserContext";
 import axios from "axios";
 
-export default function Messages() {
+export default function Contacts() {
   const { userData, setUserData } = useContext(UserContext);
   const [input, setInput] = useState("");
   const [searchData, setSearchData] = useState(null);

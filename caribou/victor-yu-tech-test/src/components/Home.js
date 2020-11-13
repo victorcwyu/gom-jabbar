@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import UserContext from "../context/UserContext";
 import { useHistory } from "react-router-dom";
-import Messages from "./Messages";
+import Contacts from "./Contacts";
 
 export default function Home() {
   const { userData, setUserData } = useContext(UserContext);
@@ -17,7 +17,7 @@ export default function Home() {
     <>
       <h1>Welcome back {userData.user.username}!</h1>
       <button onClick={handleLogOut}>Log Out</button>
-      <Messages />
+      <Contacts />
     </>
   );
 }
