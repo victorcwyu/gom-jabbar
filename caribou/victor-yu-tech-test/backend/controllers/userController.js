@@ -81,10 +81,10 @@ exports.addContact = async (req, res, next) => {
 
 exports.removeContact = async (req, res, next) => {
   try {
-    const { contactData } = req.body;
+    const { contactId } = req.body;
     const currentUser = await User.findById(req.user);
     const updatedContacts = currentUser.contacts.filter(
-      (i) => i.id !== contactData.id
+      (i) => i.id !== contactId
     );
     currentUser.contacts = updatedContacts;
     await currentUser.save();
