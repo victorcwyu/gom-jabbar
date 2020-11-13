@@ -34,7 +34,20 @@ export default function Signup() {
           login.data.authenticationToken
         );
         const token = localStorage.getItem("authentication-token");
-        setUserData({ ...userData, token: token });
+        const getCurrentUser = await axios.post(
+          "http://localhost:5000/getCurrentUser",
+          null,
+          {
+            headers: {
+              "Authentication-Token": token,
+            },
+          }
+        );
+        setUserData({
+          ...userData,
+          token: token,
+          user: getCurrentUser.data,
+        });
         history.push("/");
       }
     } catch (err) {
