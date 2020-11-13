@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
 import UserContext from "./context/UserContext";
 import Home from "./components/Home";
@@ -15,9 +15,11 @@ function App() {
   return (
     <Router>
       <UserContext.Provider value={{ userData, setUserData }}>
-        <Route path="/" exact component={Home} />
-        <Route path="/signup" exact component={Signup} />
-        <Route path="/login" exact component={Login} />
+        <Switch>
+          <Route path="/" exact component={Home} />
+          <Route path="/signup" exact component={Signup} />
+          <Route path="/login" exact component={Login} />
+        </Switch>
       </UserContext.Provider>
     </Router>
   );
