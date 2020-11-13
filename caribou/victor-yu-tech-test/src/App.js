@@ -1,10 +1,11 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import "./App.css";
+import axios from "axios";
 import UserContext from "./context/UserContext";
 import Home from "./components/Home";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
+import "./App.css";
 
 function App() {
   const [userData, setUserData] = useState({
@@ -15,6 +16,30 @@ function App() {
     userData,
     setUserData,
   ]);
+
+  useEffect(() => {
+    const isUserLoggedIn = async () => {
+      let token = localStorage.getItem("authentication-token");
+
+      if (!token) {
+        return;
+      }
+      const getCurrentUser = await axios.post(
+        "http://localhost:5000/getCurrentUser",
+        null,
+        {
+          headers: {
+            "Authentication-Token": token,
+          },
+        }
+      );
+      setUserData({
+        token: token,
+        user: getCurrentUser.data,
+      });
+    };
+    isUserLoggedIn();
+  }, [userData.token]);
 
   return (
     <Router>
