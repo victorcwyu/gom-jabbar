@@ -1,0 +1,59 @@
+import React, { useState, useContext } from "react";
+import UserContext from "../context/UserContext";
+import { useHistory } from "react-router-dom";
+import axios from "axios";
+
+export default function Login() {
+  const [userInfo, setUserInfo] = useState({
+    username: "",
+    password: "",
+  });
+  const { userData, setUserData } = useContext(UserContext);
+  const history = useHistory();
+
+  const handleSubmit = async (e) => {
+    try {
+      e.preventDefault();
+      const login = await axios.post(
+        "http://localhost:5000/authentication/login",
+        userInfo
+      );
+      localStorage.setItem(
+        "authentication-token",
+        login.data.authenticationToken
+      );
+      const token = localStorage.getItem("authentication-token");
+      setUserData({ ...userData, token: token });
+      history.push("/");
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  return (
+    <>
+      <h1>Login</h1>
+      <form autoComplete="off" onSubmit={handleSubmit}>
+        <input
+          id="username"
+          placeholder="username"
+          type="text"
+          value={userInfo.username}
+          onChange={(e) =>
+            setUserInfo({ ...userInfo, username: e.target.value })
+          }
+        />
+        <input
+          id="password"
+          placeholder="password"
+          type="text"
+          value={userInfo.password}
+          onChange={(e) =>
+            setUserInfo({ ...userInfo, password: e.target.value })
+          }
+        />
+        <button type="submit">Login</button>
+      </form>
+    </>
+  );
+}
