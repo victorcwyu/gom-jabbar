@@ -7,9 +7,10 @@ export default function MessageDisplay({ messages }) {
       <div className="display">
         {messages &&
           messages.messageHistory &&
-          messages.messageHistory.map((message) => {
+          messages.messageHistory.map((message, index) => {
             return (
               <MessageContent
+                key={index}
                 message={message.text}
                 senderId={message.senderId}
                 time={message.timeStamp}

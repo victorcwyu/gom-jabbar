@@ -6,6 +6,7 @@ import Landing from "./components/Landing";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
 import Home from "./components/Home";
+import Messages from "./components/Messages";
 import "./App.css";
 
 function App() {
@@ -52,6 +53,7 @@ function App() {
           {userData.token !== null && <Route path="/" exact component={Home} />}
           <Route path="/signup" exact component={Signup} />
           <Route path="/login" exact component={Login} />
+          <Route path="/messages" exact component={Messages} />
         </Switch>
       </UserContext.Provider>
     </Router>

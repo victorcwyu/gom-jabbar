@@ -10,6 +10,7 @@ exports.getCurrentUser = async (req, res, next) => {
       throw error;
     }
     res.status(200).json({
+      id: user._id,
       username: user.username,
       contacts: user.contacts,
       reports: user.reports,

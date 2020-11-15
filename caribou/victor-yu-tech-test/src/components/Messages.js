@@ -1,0 +1,112 @@
+import React, { useEffect, useContext, useState } from "react";
+import UserContext from "../context/UserContext";
+import { useHistory } from "react-router-dom";
+import io from "socket.io-client";
+import MessageDisplay from "./MessageDisplay";
+import axios from "axios";
+
+let socket;
+
+export default function Messages() {
+  const { userData } = useContext(UserContext);
+  const history = useHistory();
+  const [message, setMessage] = useState("");
+  const [messages, setMessages] = useState("");
+  const token = localStorage.getItem("authentication-token");
+
+  useEffect(() => {
+    socket = io("http://localhost:5000");
+
+    if (!userData.user) {
+      history.push("/");
+    } else {
+      axios
+        .post(
+          "http://localhost:5000/getUserMessages",
+          {
+            userId: userData.user.id,
+            contactId: userData.contactInformation.contactId,
+          },
+          {
+            headers: {
+              "Authentication-Token": token,
+            },
+          }
+        )
+        .then((res) => {
+          setMessages(res.data.userMessageHistory);
+        });
+
+      socket.emit("joinroom", userData.user);
+    }
+    return () => socket.disconnect();
+  }, []);
+
+  if (messages) {
+    socket.off("newMessage");
+    socket.on("newMessage", (data) => {
+      console.log("message recieved");
+      const newHistory = [...messages.messageHistory, data];
+      setMessages({ ...messages, messageHistory: newHistory });
+    });
+  }
+
+  const sendMessage = (e) => {
+    e.preventDefault();
+    if (message) {
+      const newMessage = {
+        text: message,
+        senderId: userData.user.id,
+        timeStamp: Date.now(),
+      };
+      if (!messages) {
+        setMessages({ ...messages, messageHistory: [newMessage] });
+      } else {
+        const currentHistory = messages.messageHistory;
+        const newHistory = [...currentHistory, newMessage];
+        setMessages({ ...messages, messageHistory: newHistory });
+      }
+
+      axios
+        .post(
+          "http://localhost:5000/updateUserMessages",
+          {
+            newMessage,
+            messagesId: messages._id,
+          },
+          {
+            headers: {
+              "Authentication-Token": token,
+            },
+          }
+        )
+        .catch((err) => console.log(err));
+
+      socket.emit("update", {
+        newMessage,
+        messages: messages,
+        senderId: userData.user.id,
+      });
+
+      setMessage("");
+    }
+  };
+
+  return (
+    <div>
+      {userData.contactInformation && (
+        <h1>
+          Conversation with{" "}
+          <span>{userData.contactInformation.contactName}</span>
+        </h1>
+      )}
+      <MessageDisplay messages={messages} />
+      <input
+        value={message}
+        onChange={(e) => setMessage(e.target.value)}
+        onKeyPress={(e) => (e.key === "Enter" ? sendMessage(e) : null)}
+      />
+      <button onClick={sendMessage}>Submit</button>
+    </div>
+  );
+}
