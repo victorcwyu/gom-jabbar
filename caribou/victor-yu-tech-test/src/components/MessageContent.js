@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import UserContext from "../context/UserContext";
 
-export default function MessageContent({ message, senderId }) {
+export default function MessageContent({ message, senderId, time }) {
   const { userData } = useContext(UserContext);
 
   return (
@@ -11,6 +11,7 @@ export default function MessageContent({ message, senderId }) {
       }
     >
       <p>{message}</p>
+      <p>{time}</p>
     </div>
   );
 }
