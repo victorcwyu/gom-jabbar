@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import UserContext from "../context/UserContext";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
@@ -10,6 +10,12 @@ export default function NewReport() {
   const token = localStorage.getItem("authentication-token");
   const lat = userData.lat;
   const lng = userData.lng;
+
+  useEffect(() => {
+    if (!userData.user) {
+      history.push("/");
+    }
+  }, [userData.user, history]);
 
   const submitReport = (e) => {
     e.preventDefault();

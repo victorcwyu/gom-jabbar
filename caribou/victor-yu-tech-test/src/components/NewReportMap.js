@@ -14,6 +14,12 @@ export default function NewReportMap() {
   const googleMapRef = useRef(null);
 
   useEffect(() => {
+    if (!userData.user) {
+      history.push("/");
+    }
+  }, [userData.user, history]);
+
+  useEffect(() => {
     createNewReportMap();
   }, []);
 

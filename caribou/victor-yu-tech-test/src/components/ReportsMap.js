@@ -1,4 +1,6 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useContext } from "react";
+import { useHistory } from "react-router-dom";
+import UserContext from "../context/UserContext";
 import { initializeGoogleMap, reportsCoordinates } from "../helpers/helpers.js";
 import "../styles/ReportsMap.css";
 import axios from "axios";
@@ -7,8 +9,20 @@ const markers = [];
 const infowindows = [];
 
 export default function NewReportMap() {
+  const { userData } = useContext(UserContext);
+  const history = useHistory();
   const googleMapRef = useRef(null);
   const token = localStorage.getItem("authentication-token");
+
+  useEffect(() => {
+    if (!userData.user) {
+      history.push("/");
+    }
+  }, [userData.user, history]);
+
+  useEffect(() => {
+    createReportsMap();
+  });
 
   const getReportsData = async () => {
     const res = await axios.get("http://localhost:5000/reports/getReports", {
@@ -21,10 +35,6 @@ export default function NewReportMap() {
       return reportsCoordinates(reports);
     }
   };
-
-  useEffect(() => {
-    createReportsMap();
-  });
 
   const createReportsMap = async () => {
     const reportsCoordinates = await getReportsData();
