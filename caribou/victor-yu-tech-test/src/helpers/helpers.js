@@ -5,3 +5,5 @@ const initializeGoogleMap = (ref) => {
     disableDefaultUI: true,
   });
 };
+
+export { initializeGoogleMap };

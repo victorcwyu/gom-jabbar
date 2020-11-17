@@ -1,9 +1,8 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import { useHistory } from "react-router-dom";
-import UserContext from "../../context/UserContext";
-import "../../styles/UserMap.scss";
-
-import { initializeGoogleMap } from "../../helpers/helpers.js";
+import UserContext from "../context/UserContext";
+import { initializeGoogleMap } from "../helpers/helpers.js";
+import "../styles/NewReportMap.css";
 
 const noDisplay = {
   display: "none",
@@ -71,17 +70,18 @@ export default function NewReportMap() {
     e.preventDefault();
     let sighting = document.getElementById("iw-lat-long").textContent;
     setUserData({ ...userData, sighting });
-    history.push("/login");
+    history.push("/newreport");
   };
 
   return (
     <>
+      <h1>NEW REPORT MAP</h1>
       <div id="homeMap" ref={googleMapRef} />
       <div style={noDisplay}>
         <div id="info-content">
+          <h2>Human spotting at:</h2>
           <table>
             <tbody>
-              <h2>Human spotting at:</h2>
               <tr id="lat-long-row">
                 <td id="iw-lat-long"></td>
               </tr>

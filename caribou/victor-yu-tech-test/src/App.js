@@ -8,11 +8,15 @@ import Login from "./components/Login";
 import Home from "./components/Home";
 import Messages from "./components/Messages";
 import "./App.css";
+import NewReportMap from "./components/NewReportMap";
+
+const GOOGLE_MAP_API_KEY = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
 
 function App() {
   const [userData, setUserData] = useState({
     token: null,
     user: null,
+    googleMapsLoaded: false,
   });
   const value = useMemo(() => ({ userData, setUserData }), [
     userData,
@@ -20,8 +24,26 @@ function App() {
   ]);
 
   useEffect(() => {
+    // this function loads the google maps JavaScript API and adds it to the state and the global window object
+    const onScriptload = () => {
+      const googleMapScript = document.createElement("script");
+      googleMapScript.src = `https://maps.googleapis.com/maps/api/js?key=${GOOGLE_MAP_API_KEY}&libraries=places`;
+      window.document.body.appendChild(googleMapScript);
+      googleMapScript.addEventListener("load", function () {
+        setUserData((userData) => ({
+          ...userData,
+          googleMapsLoaded: !userData.googleMapsLoaded,
+        }));
+      });
+      localStorage.setItem("googleMaps", "true");
+    };
+    onScriptload();
+  }, []);
+
+  useEffect(() => {
     const isUserLoggedIn = async () => {
       let token = localStorage.getItem("authentication-token");
+      let googleMaps = JSON.parse(localStorage.getItem("googleMaps"));
 
       if (!token) {
         return;
@@ -38,6 +60,7 @@ function App() {
       setUserData({
         token: token,
         user: getCurrentUser.data,
+        googleMapsLoaded: googleMaps,
       });
     };
     isUserLoggedIn();
@@ -54,6 +77,9 @@ function App() {
           <Route path="/signup" exact component={Signup} />
           <Route path="/login" exact component={Login} />
           <Route path="/messages" exact component={Messages} />
+          {userData.googleMapsLoaded === true && (
+            <Route path="/newreportmap" exact component={NewReportMap} />
+          )}
         </Switch>
       </UserContext.Provider>
     </Router>
