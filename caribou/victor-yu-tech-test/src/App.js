@@ -9,6 +9,8 @@ import Home from "./components/Home";
 import Messages from "./components/Messages";
 import "./App.css";
 import NewReportMap from "./components/NewReportMap";
+import NewReport from "./components/NewReport";
+import ReportsMap from "./components/ReportsMap";
 
 const GOOGLE_MAP_API_KEY = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
 
@@ -79,6 +81,10 @@ function App() {
           <Route path="/messages" exact component={Messages} />
           {userData.googleMapsLoaded === true && (
             <Route path="/newreportmap" exact component={NewReportMap} />
+          )}
+          <Route path="/newreport" exact component={NewReport} />
+          {userData.googleMapsLoaded === true && (
+            <Route path="/reportsmap" exact component={ReportsMap} />
           )}
         </Switch>
       </UserContext.Provider>

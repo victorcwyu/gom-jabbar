@@ -68,8 +68,8 @@ export default function NewReportMap() {
   // redirect to reports
   const submitReport = (e) => {
     e.preventDefault();
-    let sighting = document.getElementById("iw-lat-long").textContent;
-    setUserData({ ...userData, sighting });
+    let coordinates = document.getElementById("iw-lat-long").textContent;
+    setUserData({ ...userData, coordinates });
     history.push("/newreport");
   };
 
