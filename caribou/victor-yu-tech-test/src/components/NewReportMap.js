@@ -12,11 +12,10 @@ export default function NewReportMap() {
   const { userData, setUserData } = useContext(UserContext);
   const history = useHistory();
   const googleMapRef = useRef(null);
-  const token = localStorage.getItem("auth-token");
 
   useEffect(() => {
     createNewReportMap();
-  }, [token]);
+  }, []);
 
   const createNewReportMap = () => {
     // Initialize Google Maps
@@ -56,20 +55,24 @@ export default function NewReportMap() {
     );
     // retrieves latitude and longitude
     function getLatLong(pin) {
-      let latLong = pin.getPosition().lat() + "," + pin.getPosition().lng();
+      let lat = pin.getPosition().lat();
+      let lng = pin.getPosition().lng();
+      // let latLong = pin.getPosition().lat() + "," + pin.getPosition().lng();
       pinInfoWindow.open(map, pin);
-      buildIWContent(latLong);
+      buildIWContent(lat, lng);
     }
     // Load the pin information into the HTML elements used by the InfoWindow.
-    function buildIWContent(latLong) {
-      document.getElementById("iw-lat-long").textContent = latLong;
+    function buildIWContent(lat, lng) {
+      document.getElementById("iw-lat").textContent = lat;
+      document.getElementById("iw-lng").textContent = lng;
     }
   };
   // redirect to reports
   const submitReport = (e) => {
     e.preventDefault();
-    let coordinates = document.getElementById("iw-lat-long").textContent;
-    setUserData({ ...userData, coordinates });
+    let lat = document.getElementById("iw-lat").textContent;
+    let lng = document.getElementById("iw-lng").textContent;
+    setUserData({ ...userData, lat, lng });
     history.push("/newreport");
   };
 
@@ -82,8 +85,11 @@ export default function NewReportMap() {
           <h2>Human spotting at:</h2>
           <table>
             <tbody>
-              <tr id="lat-long-row">
-                <td id="iw-lat-long"></td>
+              <tr id="lat-row">
+                <td id="iw-lat"></td>
+              </tr>
+              <tr id="long-row">
+                <td id="iw-lng"></td>
               </tr>
               <tr>
                 <td>

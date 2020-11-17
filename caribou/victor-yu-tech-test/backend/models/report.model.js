@@ -8,8 +8,12 @@ const reportSchema = new Schema(
       type: String,
       required: true,
     },
-    coordinates: {
-      type: String,
+    lat: {
+      type: Number,
+      required: true,
+    },
+    lng: {
+      type: Number,
       required: true,
     },
     level: {

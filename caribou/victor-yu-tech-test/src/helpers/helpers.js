@@ -6,4 +6,17 @@ const initializeGoogleMap = (ref) => {
   });
 };
 
-export { initializeGoogleMap };
+const reportsCoordinates = function (reportsArr) {
+  const coordinates = reportsArr.map((report) => {
+    return [
+      {
+        lat: report.lat,
+        lng: report.lng,
+      },
+      report.level,
+    ];
+  });
+  return coordinates;
+};
+
+export { initializeGoogleMap, reportsCoordinates };

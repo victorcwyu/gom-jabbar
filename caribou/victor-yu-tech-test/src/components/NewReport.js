@@ -8,7 +8,8 @@ export default function NewReport() {
   const history = useHistory();
   const [level, setLevel] = useState("");
   const token = localStorage.getItem("authentication-token");
-  const coordinates = userData.coordinates;
+  const lat = userData.lat;
+  const lng = userData.lng;
 
   const submitReport = (e) => {
     e.preventDefault();
@@ -16,7 +17,8 @@ export default function NewReport() {
       .post(
         "http://localhost:5000/reports/addReport",
         {
-          coordinates,
+          lat,
+          lng,
           level,
         },
         {
@@ -31,7 +33,9 @@ export default function NewReport() {
 
   return (
     <div>
-      <h1>New human sighting at coordinates: {coordinates}</h1>
+      <h1>
+        New human sighting at coordinates: {lat}, {lng}
+      </h1>
       <h2>Trash Level / 10</h2>
       <input
         value={level}

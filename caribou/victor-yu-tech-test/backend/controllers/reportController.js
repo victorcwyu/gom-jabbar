@@ -4,10 +4,11 @@ const Report = require("../models/report.model.js");
 exports.addReport = async (req, res, next) => {
   try {
     const user = await User.findById(req.user);
-    const { coordinates, level } = req.body;
+    const { lat, lng, level } = req.body;
     const newReport = new Report({
       reporter: user.username,
-      coordinates,
+      lat,
+      lng,
       level,
     });
     const savedReport = await newReport.save();
