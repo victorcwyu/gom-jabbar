@@ -40,12 +40,11 @@ export default function Messages() {
       socket.emit("joinroom", userData.user);
     }
     return () => socket.disconnect();
-  }, []);
+  }, [token, userData, history]);
 
   if (messages) {
     socket.off("newMessage");
     socket.on("newMessage", (data) => {
-      console.log("message recieved");
       const newHistory = [...messages.messageHistory, data];
       setMessages({ ...messages, messageHistory: newHistory });
     });
