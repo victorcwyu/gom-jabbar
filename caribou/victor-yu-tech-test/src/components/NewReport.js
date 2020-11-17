@@ -12,10 +12,10 @@ export default function NewReport() {
   const lng = userData.lng;
 
   useEffect(() => {
-    if (!userData.user) {
+    if (!token) {
       history.push("/");
     }
-  }, [userData.user, history]);
+  }, [token, history]);
 
   const submitReport = (e) => {
     e.preventDefault();
