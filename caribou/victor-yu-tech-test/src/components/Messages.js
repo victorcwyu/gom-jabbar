@@ -53,10 +53,14 @@ export default function Messages() {
   const sendMessage = (e) => {
     e.preventDefault();
     if (message) {
+      const estTime = new Date().toLocaleString("en-US", {
+        timeZone: "America/Toronto",
+      });
+
       const newMessage = {
         text: message,
         senderId: userData.user.id,
-        timeStamp: Date.now(),
+        timeStamp: estTime,
       };
       if (!messages) {
         setMessages({ ...messages, messageHistory: [newMessage] });
