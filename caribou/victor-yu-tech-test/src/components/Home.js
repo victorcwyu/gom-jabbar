@@ -9,6 +9,7 @@ export default function Home() {
   const handleLogOut = (e) => {
     e.preventDefault();
     localStorage.removeItem("authentication-token");
+    localStorage.removeItem("googleMaps");
     setUserData({ ...userData, token: null });
     history.push("/");
   };
