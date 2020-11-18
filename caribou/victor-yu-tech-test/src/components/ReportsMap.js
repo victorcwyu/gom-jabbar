@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { useHistory } from "react-router-dom";
-import { initializeGoogleMap, reportsCoordinates } from "../helpers/helpers.js";
+import { initializeGoogleMap } from "../helpers/helpers.js";
 import "../styles/ReportsMap.css";
 import axios from "axios";
 
@@ -11,6 +11,19 @@ export default function NewReportMap() {
   const history = useHistory();
   const googleMapRef = useRef(null);
   const token = localStorage.getItem("authentication-token");
+
+  const reportsCoordinates = function (reportsArr) {
+    const coordinates = reportsArr.map((report) => {
+      return [
+        {
+          lat: report.lat,
+          lng: report.lng,
+        },
+        report.level,
+      ];
+    });
+    return coordinates;
+  };
 
   useEffect(() => {
     if (!token) {
