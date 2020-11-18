@@ -43,7 +43,6 @@ export default function Messages() {
   }, [token, userData, history]);
 
   if (messages) {
-    socket.off("newMessage");
     socket.on("newMessage", (data) => {
       const newHistory = [...messages.messageHistory, data];
       setMessages({ ...messages, messageHistory: newHistory });
