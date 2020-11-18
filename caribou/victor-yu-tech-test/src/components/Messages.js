@@ -56,8 +56,13 @@ export default function Messages() {
         timeZone: "America/Toronto",
       });
 
+      // implement Caribou algorithm
+      const cariboudMessage = message
+        .replace(/[b-df-hj-np-tv-z]/gi, "grm")
+        .replace(/[aeiou]/gi, "muu");
+
       const newMessage = {
-        text: message,
+        text: cariboudMessage,
         senderId: userData.user.id,
         timeStamp: estTime,
       };
