@@ -39,6 +39,7 @@ export default function Login() {
       });
       history.push("/");
     } catch (err) {
+      alert("Unable to login due to invalid credentials!");
       console.error(err);
     }
   };
