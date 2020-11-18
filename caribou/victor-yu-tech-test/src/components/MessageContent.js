@@ -3,6 +3,10 @@ import UserContext from "../context/UserContext";
 
 export default function MessageContent({ message, senderId, time }) {
   const { userData } = useContext(UserContext);
+  // implement Caribou algorithm
+  const cariboudMessage = message
+    .replace(/[b-df-hj-np-tv-z]/gi, "grm")
+    .replace(/[aeiou]/gi, "muu");
 
   return (
     <div
@@ -10,7 +14,7 @@ export default function MessageContent({ message, senderId, time }) {
         userData.user.id === senderId ? "sender-message" : "contact-message"
       }
     >
-      <p>{message}</p>
+      <p>{cariboudMessage}</p>
       <p>{time}</p>
     </div>
   );
