@@ -42,6 +42,11 @@ export default function NewReport() {
     }
   };
 
+  const handleCancel = (e) => {
+    e.preventDefault();
+    history.push("/newreportmap");
+  };
+
   return (
     <div>
       <h1>
@@ -54,6 +59,7 @@ export default function NewReport() {
         onKeyPress={(e) => (e.key === "Enter" ? submitReport(e) : null)}
       />
       <button onClick={submitReport}>Submit Report</button>
+      <button onClick={handleCancel}>Cancel</button>
     </div>
   );
 }
