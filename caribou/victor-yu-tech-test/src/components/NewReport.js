@@ -20,7 +20,7 @@ export default function NewReport() {
   const submitReport = (e) => {
     e.preventDefault();
     // check that the level is between 1 and 10
-    if (level < 0 || level > 10) {
+    if (level !== [1 - 10]) {
       alert("Please enter a trash level between 1 and 10!");
     } else {
       axios
