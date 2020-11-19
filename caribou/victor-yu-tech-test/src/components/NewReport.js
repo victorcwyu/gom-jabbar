@@ -19,22 +19,27 @@ export default function NewReport() {
 
   const submitReport = (e) => {
     e.preventDefault();
-    axios
-      .post(
-        "http://localhost:5000/reports/addReport",
-        {
-          lat,
-          lng,
-          level,
-        },
-        {
-          headers: {
-            "Authentication-Token": token,
+    // check that the level is between 1 and 10
+    if (level < 0 || level > 10) {
+      alert("Please enter a trash level between 1 and 10!");
+    } else {
+      axios
+        .post(
+          "http://localhost:5000/reports/addReport",
+          {
+            lat,
+            lng,
+            level,
           },
-        }
-      )
-      .catch((err) => console.log(err));
-    history.push("/");
+          {
+            headers: {
+              "Authentication-Token": token,
+            },
+          }
+        )
+        .catch((err) => console.log(err));
+      history.push("/");
+    }
   };
 
   return (
