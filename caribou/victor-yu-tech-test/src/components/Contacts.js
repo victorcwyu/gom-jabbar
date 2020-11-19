@@ -60,6 +60,12 @@ export default function Contacts() {
     }
   };
 
+  const handleCancel = (e) => {
+    e.preventDefault();
+    setSearchData(null);
+    setInput("");
+  };
+
   const contacts = userData.user.contacts.map((contact, index) => {
     return (
       <ContactInformation
@@ -93,6 +99,7 @@ export default function Contacts() {
           <button onClick={handleAddContact}>
             Add {searchData.username} to your Contacts
           </button>
+          <button onClick={handleCancel}>Cancel</button>
         </div>
       )}
     </>
