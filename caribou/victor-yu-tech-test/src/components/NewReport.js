@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect } from "react";
 import UserContext from "../context/UserContext";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
+import io from "socket.io-client";
 
 export default function NewReport() {
   const { userData } = useContext(UserContext);
@@ -18,6 +19,7 @@ export default function NewReport() {
   }, [token, history]);
 
   const submitReport = (e) => {
+    const socket = io("http://localhost:5000");
     e.preventDefault();
     // check that the level is between 1 and 10
     const range = (level - 0) * (level - 11) < 0;
@@ -38,6 +40,8 @@ export default function NewReport() {
             },
           }
         )
+        // allows real-time mapping of reports
+        .then(() => socket.emit("newReport"))
         .catch((err) => console.log(err));
       history.push("/");
     }

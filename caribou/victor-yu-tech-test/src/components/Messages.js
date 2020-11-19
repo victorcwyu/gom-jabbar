@@ -43,7 +43,7 @@ export default function Messages() {
   }, [token, userData, history]);
 
   if (messages) {
-    socket.on("newMessage", (data) => {
+    socket.on("messagesUpdated", (data) => {
       const newHistory = [...messages.messageHistory, data];
       setMessages({ ...messages, messageHistory: newHistory });
     });
@@ -89,7 +89,7 @@ export default function Messages() {
         )
         .catch((err) => console.log(err));
 
-      socket.emit("update", {
+      socket.emit("newMessage", {
         newMessage,
         messages: messages,
         senderId: userData.user.id,

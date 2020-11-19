@@ -3,6 +3,7 @@ import { useHistory, Link } from "react-router-dom";
 import { initializeGoogleMap } from "../helpers/helpers.js";
 import "../styles/ReportsMap.css";
 import axios from "axios";
+import io from "socket.io-client";
 
 const markers = [];
 const infowindows = [];
@@ -26,6 +27,8 @@ export default function NewReportMap() {
   };
 
   useEffect(() => {
+    const socket = io("http://localhost:5000");
+
     if (!token) {
       history.push("/");
     } else {
@@ -65,7 +68,12 @@ export default function NewReportMap() {
         });
       };
       createReportsMap();
+      // when a new report is submited, the reports map is re-rendered
+      socket.on("reportsUpdated", () => {
+        createReportsMap();
+      });
     }
+    return () => socket.disconnect();
   }, [token, history]);
 
   return (

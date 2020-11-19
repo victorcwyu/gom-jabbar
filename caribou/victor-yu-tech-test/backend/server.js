@@ -25,18 +25,21 @@ app.use(
 
 // socket.io
 io.on("connection", (socket) => {
-  let roomId;
   console.log("User connected");
 
   socket.on("joinroom", (data) => {
-    roomId = data.id;
+    const roomId = data.id;
     socket.join(roomId);
   });
 
-  socket.on("update", async (data) => {
+  socket.on("newMessage", async (data) => {
     const { senderId, messages } = data;
     const sendTo = messages.users.filter((i) => i !== senderId)[0];
-    socket.to(sendTo).emit("newMessage", data.newMessage);
+    socket.to(sendTo).emit("messagesUpdated", data.newMessage);
+  });
+
+  socket.on("newReport", () => {
+    io.emit("reportsUpdated");
   });
 
   socket.on("disconnect", () => {
