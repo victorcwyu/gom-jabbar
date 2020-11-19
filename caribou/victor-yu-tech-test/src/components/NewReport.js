@@ -13,10 +13,10 @@ export default function NewReport() {
   const lng = userData.lng;
 
   useEffect(() => {
-    if (!token) {
+    if (!token || !lat || !lng) {
       history.push("/");
     }
-  }, [token, history]);
+  }, [token, history, lat, lng]);
 
   const submitReport = (e) => {
     const socket = io("http://localhost:5000");
