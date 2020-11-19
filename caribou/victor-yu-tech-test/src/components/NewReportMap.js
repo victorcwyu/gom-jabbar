@@ -1,9 +1,8 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import { useHistory } from "react-router-dom";
 import UserContext from "../context/UserContext";
 import { initializeGoogleMap } from "../helpers/helpers.js";
 import "../styles/NewReportMap.css";
-import NewReport from "./NewReport";
 
 const noDisplay = {
   display: "none",
@@ -14,7 +13,6 @@ export default function NewReportMap() {
   const history = useHistory();
   const googleMapRef = useRef(null);
   const token = localStorage.getItem("authentication-token");
-  const [report, setReport] = useState(false);
 
   useEffect(() => {
     if (!token) {
@@ -60,7 +58,6 @@ export default function NewReportMap() {
         function getLatLong(pin) {
           let lat = pin.getPosition().lat();
           let lng = pin.getPosition().lng();
-          // let latLong = pin.getPosition().lat() + "," + pin.getPosition().lng();
           pinInfoWindow.open(map, pin);
           buildIWContent(lat, lng);
         }
@@ -80,9 +77,7 @@ export default function NewReportMap() {
     let lat = document.getElementById("iw-lat").textContent;
     let lng = document.getElementById("iw-lng").textContent;
     setUserData({ ...userData, lat, lng });
-    setReport(true);
-    // pinInfoWindow.close();
-    // history.push("/newreport");
+    history.push("/newreport");
   };
 
   return (
@@ -109,7 +104,6 @@ export default function NewReportMap() {
           </table>
         </div>
       </div>
-      {report === true && <NewReport />}
     </>
   );
 }
