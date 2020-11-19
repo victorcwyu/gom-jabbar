@@ -20,7 +20,8 @@ export default function NewReport() {
   const submitReport = (e) => {
     e.preventDefault();
     // check that the level is between 1 and 10
-    if (level !== [1 - 10]) {
+    const range = (level - 1) * (level - 10) < 0;
+    if (!range || Number.isNaN(level)) {
       alert("Please enter a trash level between 1 and 10!");
     } else {
       axios
