@@ -28,6 +28,7 @@ export default function Contacts() {
         .catch((error) => {
           const errorMessage = error.response.data.message;
           alert(errorMessage);
+          setInput("");
         });
     } catch (error) {
       console.error(error);

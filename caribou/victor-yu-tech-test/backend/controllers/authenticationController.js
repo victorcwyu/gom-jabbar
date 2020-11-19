@@ -60,13 +60,13 @@ exports.login = async (req, res, next) => {
     const { username, password } = req.body;
     const user = await User.findOne({ username: username });
     if (!user) {
-      const error = new Error("The username is not valid!");
+      const error = new Error("That username is not valid!");
       error.statusCode = 401;
       throw error;
     }
     const validPassword = await bcrypt.compare(password, user.password);
     if (!validPassword) {
-      const error = new Error("The password is not valid!");
+      const error = new Error("That password is not valid!");
       error.statusCode = 401;
       throw error;
     }
