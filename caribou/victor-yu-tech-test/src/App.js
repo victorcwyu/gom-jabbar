@@ -26,7 +26,6 @@ function App() {
   ]);
 
   useEffect(() => {
-    localStorage.clear();
     // this function loads the google maps JavaScript API and adds it to the state and the global window object
     const onScriptload = () => {
       const googleMapScript = document.createElement("script");
