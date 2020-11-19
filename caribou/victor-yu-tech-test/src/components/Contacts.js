@@ -24,9 +24,13 @@ export default function Contacts() {
         )
         .then((res) => {
           setSearchData(res.data);
+        })
+        .catch((error) => {
+          const errorMessage = error.response.data.message;
+          alert(errorMessage);
         });
-    } catch (err) {
-      console.error(err);
+    } catch (error) {
+      console.error(error);
     }
   };
 
@@ -51,8 +55,8 @@ export default function Contacts() {
       setUserData({ ...userData, user: updatedUserData });
       setSearchData(null);
       setInput("");
-    } catch (err) {
-      console.error(err);
+    } catch (error) {
+      console.error(error);
     }
   };
 
