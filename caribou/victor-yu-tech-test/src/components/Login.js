@@ -38,9 +38,9 @@ export default function Login() {
         user: getCurrentUser.data,
       });
       history.push("/");
-    } catch (err) {
-      alert("Unable to login due to invalid credentials!");
-      console.error(err);
+    } catch (error) {
+      const errorMessage = error.response.data.message;
+      alert(errorMessage);
     }
   };
 
