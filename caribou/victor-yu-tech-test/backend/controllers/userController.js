@@ -1,6 +1,5 @@
 const User = require("../models/user.model.js");
 const Message = require("../models/message.model.js");
-const { Children } = require("react");
 
 exports.getCurrentUser = async (req, res, next) => {
   try {
