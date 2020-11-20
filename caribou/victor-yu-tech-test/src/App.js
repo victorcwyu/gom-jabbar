@@ -7,7 +7,7 @@ import Signup from "./components/Signup";
 import Login from "./components/Login";
 import Home from "./components/Home";
 import Messages from "./components/Messages";
-import "./App.css";
+import "./App.scss";
 import NewReportMap from "./components/NewReportMap";
 import NewReport from "./components/NewReport";
 import ReportsMap from "./components/ReportsMap";
