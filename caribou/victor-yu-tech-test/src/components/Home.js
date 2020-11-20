@@ -23,8 +23,10 @@ export default function Home() {
           <h1>Welcome back {userData.user.username}!</h1>
           <button onClick={handleLogOut}>Log Out</button>
         </div>
-        <Contacts />
-        <ReportsMap />
+        <div className="contactsAndMapContainer">
+          <Contacts />
+          <ReportsMap />
+        </div>
       </div>
     </>
   );

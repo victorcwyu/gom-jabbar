@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import UserContext from "../context/UserContext";
 import axios from "axios";
 import ContactInformation from "./ContactInformation";
+import "../styles/Contacts.scss";
 
 export default function Contacts() {
   const { userData, setUserData } = useContext(UserContext);
@@ -80,12 +81,12 @@ export default function Contacts() {
   return (
     <>
       {userData.user.contacts[0] !== undefined && (
-        <div>
+        <div className="contactsWrapper">
           <h1>Contacts</h1>
           <ul>{contacts}</ul>
         </div>
       )}
-      <div>
+      <div className="search">
         <h2>Search Users</h2>
         <input
           type="text"
@@ -96,7 +97,8 @@ export default function Contacts() {
         {!searchData && <button onClick={handleSearch}>Search</button>}
       </div>
       {searchData && (
-        <div>
+        <div className="searchResults">
+          <h2>Search Results</h2>
           <button onClick={handleAddContact}>
             Add {searchData.username} to your Contacts
           </button>
