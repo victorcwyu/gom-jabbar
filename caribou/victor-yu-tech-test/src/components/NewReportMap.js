@@ -4,6 +4,7 @@ import UserContext from "../context/UserContext";
 import { initializeGoogleMap } from "../helpers/helpers.js";
 import "../styles/NewReportMap.scss";
 import Footer from "./Footer";
+import Header from "./Header";
 
 const noDisplay = {
   display: "none",
@@ -83,6 +84,7 @@ export default function NewReportMap() {
 
   return (
     <>
+      <Header />
       <div className="new-report-map">
         <h1>Where did you spot the human?</h1>
         <div className="home-map" ref={googleMapRef} />

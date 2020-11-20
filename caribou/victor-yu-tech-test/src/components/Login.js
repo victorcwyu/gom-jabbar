@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import axios from "axios";
 import "../styles/Login.scss";
 import Footer from "./Footer";
+import Header from "./Header";
 
 export default function Login() {
   const [userInfo, setUserInfo] = useState({
@@ -48,6 +49,7 @@ export default function Login() {
 
   return (
     <>
+      <Header />
       <div className="loginWrapper">
         <h1>Login</h1>
         <form autoComplete="off" onSubmit={handleSubmit}>

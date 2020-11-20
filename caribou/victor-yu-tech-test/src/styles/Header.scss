@@ -11,6 +11,7 @@ nav {
       display: flex;
       align-items: center;
       .nav-item {
+        margin-right: 1rem;
         text-decoration: none;
         color: white;
         &:hover {
@@ -21,7 +22,6 @@ nav {
         }
       }
       .nav-button {
-        margin-left: 1rem;
         border: 1px solid black;
         border-radius: 5px;
         &:hover {

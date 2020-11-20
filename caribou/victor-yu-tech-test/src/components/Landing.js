@@ -1,17 +1,14 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import Footer from "./Footer";
 import "../styles/Landing.scss";
+import Header from "./Header";
 
 export default function Landing() {
   return (
     <>
+      <Header />
       <div className="landingWrapper">
         <h1>Welcome to the Inter-Human-Caribou Harmony (IHCH) Application!</h1>
-        <div className="landingLinks">
-          <Link to="/signup">New here?</Link>
-          <Link to="/login">Have an account?</Link>
-        </div>
       </div>
       <Footer />
     </>

@@ -31,12 +31,12 @@ export default function Header() {
           )}
           {!userData.token && (
             <Link className="nav-item" to="/login">
-              <p>Login</p>
+              Login
             </Link>
           )}
           {!userData.token && (
             <Link className="nav-item" to="/signup">
-              <p>Sign Up</p>
+              Sign Up
             </Link>
           )}
         </div>

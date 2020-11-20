@@ -4,6 +4,7 @@ import UserContext from "../context/UserContext";
 import Contacts from "./Contacts";
 import ReportsMap from "./ReportsMap";
 import "../styles/Home.scss";
+import Header from "./Header";
 import Footer from "./Footer";
 
 export default function Home() {
@@ -19,6 +20,7 @@ export default function Home() {
 
   return (
     <>
+      <Header />
       <div className="homeWrapper">
         <div className="welcomeAndLogoutContainer">
           <h1>Welcome back {userData.user.username}!</h1>

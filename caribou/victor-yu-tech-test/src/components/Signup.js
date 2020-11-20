@@ -3,6 +3,8 @@ import UserContext from "../context/UserContext";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import "../styles/Signup.scss";
+import Header from "./Header";
+import Footer from "./Footer";
 
 export default function Signup() {
   const [userInfo, setUserInfo] = useState({
@@ -79,6 +81,7 @@ export default function Signup() {
 
   return (
     <>
+      <Header />
       <div className="signupWrapper">
         <h1>Create a new account</h1>
         <form autoComplete="off" onSubmit={handleSubmit}>
@@ -121,6 +124,7 @@ export default function Signup() {
           <button type="submit">Sign up</button>
         </form>
       </div>
+      <Footer />
     </>
   );
 }

@@ -3,6 +3,7 @@ import UserContext from "../context/UserContext";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import io from "socket.io-client";
+import Header from "./Header";
 import Footer from "./Footer";
 import "../styles/NewReport.scss";
 
@@ -56,6 +57,7 @@ export default function NewReport() {
 
   return (
     <>
+      <Header />
       <div className="reportWrapper">
         <h1>Confirmed human sighting at:</h1>
         <h2>latitude: {lat}</h2>
