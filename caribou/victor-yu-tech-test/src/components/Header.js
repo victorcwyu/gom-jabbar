@@ -5,6 +5,7 @@ import "../styles/Header.scss";
 
 export default function Header() {
   const { userData, setUserData } = useContext(UserContext);
+  const user = userData.user.username;
   const history = useHistory();
 
   const handleLogOut = (e) => {
@@ -23,7 +24,7 @@ export default function Header() {
         <div className="nav-links">
           {userData.token && (
             <button className="nav-button" onClick={handleLogOut}>
-              Log Out
+              Logout {user}
             </button>
           )}
           {!userData.token && (
