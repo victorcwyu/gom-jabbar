@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import UserContext from "../context/UserContext";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
+import "../styles/Login.scss";
 
 export default function Login() {
   const [userInfo, setUserInfo] = useState({
@@ -46,28 +47,30 @@ export default function Login() {
 
   return (
     <>
-      <h1>Login</h1>
-      <form autoComplete="off" onSubmit={handleSubmit}>
-        <input
-          id="username"
-          placeholder="username"
-          type="text"
-          value={userInfo.username}
-          onChange={(e) =>
-            setUserInfo({ ...userInfo, username: e.target.value })
-          }
-        />
-        <input
-          id="password"
-          placeholder="password"
-          type="text"
-          value={userInfo.password}
-          onChange={(e) =>
-            setUserInfo({ ...userInfo, password: e.target.value })
-          }
-        />
-        <button type="submit">Login</button>
-      </form>
+      <div className="loginWrapper">
+        <h1>Login</h1>
+        <form autoComplete="off" onSubmit={handleSubmit}>
+          <input
+            id="username"
+            placeholder="username"
+            type="text"
+            value={userInfo.username}
+            onChange={(e) =>
+              setUserInfo({ ...userInfo, username: e.target.value })
+            }
+          />
+          <input
+            id="password"
+            placeholder="password"
+            type="text"
+            value={userInfo.password}
+            onChange={(e) =>
+              setUserInfo({ ...userInfo, password: e.target.value })
+            }
+          />
+          <button type="submit">Login</button>
+        </form>
+      </div>
     </>
   );
 }
