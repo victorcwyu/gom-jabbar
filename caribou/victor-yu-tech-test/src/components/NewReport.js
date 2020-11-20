@@ -3,6 +3,7 @@ import UserContext from "../context/UserContext";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import io from "socket.io-client";
+import Footer from "./Footer";
 
 export default function NewReport() {
   const { userData } = useContext(UserContext);
@@ -53,18 +54,21 @@ export default function NewReport() {
   };
 
   return (
-    <div>
-      <h1>
-        New human sighting at coordinates: {lat}, {lng}
-      </h1>
-      <h2>Trash Level / 10</h2>
-      <input
-        value={level}
-        onChange={(e) => setLevel(e.target.value)}
-        onKeyPress={(e) => (e.key === "Enter" ? submitReport(e) : null)}
-      />
-      <button onClick={submitReport}>Submit Report</button>
-      <button onClick={handleCancel}>Cancel</button>
-    </div>
+    <>
+      <div>
+        <h1>
+          New human sighting at coordinates: {lat}, {lng}
+        </h1>
+        <h2>Trash Level / 10</h2>
+        <input
+          value={level}
+          onChange={(e) => setLevel(e.target.value)}
+          onKeyPress={(e) => (e.key === "Enter" ? submitReport(e) : null)}
+        />
+        <button onClick={submitReport}>Submit Report</button>
+        <button onClick={handleCancel}>Cancel</button>
+      </div>
+      <Footer />
+    </>
   );
 }

@@ -4,6 +4,7 @@ import UserContext from "../context/UserContext";
 import Contacts from "./Contacts";
 import ReportsMap from "./ReportsMap";
 import "../styles/Home.scss";
+import Footer from "./Footer";
 
 export default function Home() {
   const { userData, setUserData } = useContext(UserContext);
@@ -28,6 +29,7 @@ export default function Home() {
           <ReportsMap />
         </div>
       </div>
+      <Footer />
     </>
   );
 }

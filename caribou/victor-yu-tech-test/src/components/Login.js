@@ -3,6 +3,7 @@ import UserContext from "../context/UserContext";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import "../styles/Login.scss";
+import Footer from "./Footer";
 
 export default function Login() {
   const [userInfo, setUserInfo] = useState({
@@ -71,6 +72,7 @@ export default function Login() {
           <button type="submit">Login</button>
         </form>
       </div>
+      <Footer />
     </>
   );
 }

@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import io from "socket.io-client";
 import MessageDisplay from "./MessageDisplay";
 import axios from "axios";
+import Footer from "./Footer";
 
 let socket;
 
@@ -100,20 +101,23 @@ export default function Messages() {
   };
 
   return (
-    <div>
-      {userData.contactInformation && (
-        <h1>
-          Conversation with{" "}
-          <span>{userData.contactInformation.contactName}</span>
-        </h1>
-      )}
-      <MessageDisplay messages={messages} />
-      <input
-        value={message}
-        onChange={(e) => setMessage(e.target.value)}
-        onKeyPress={(e) => (e.key === "Enter" ? sendMessage(e) : null)}
-      />
-      <button onClick={sendMessage}>Submit</button>
-    </div>
+    <>
+      <div>
+        {userData.contactInformation && (
+          <h1>
+            Conversation with{" "}
+            <span>{userData.contactInformation.contactName}</span>
+          </h1>
+        )}
+        <MessageDisplay messages={messages} />
+        <input
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+          onKeyPress={(e) => (e.key === "Enter" ? sendMessage(e) : null)}
+        />
+        <button onClick={sendMessage}>Submit</button>
+      </div>
+      <Footer />
+    </>
   );
 }
