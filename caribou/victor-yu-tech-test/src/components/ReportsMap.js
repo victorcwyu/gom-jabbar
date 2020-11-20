@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { useHistory, Link } from "react-router-dom";
 import { initializeGoogleMap } from "../helpers/helpers.js";
-import "../styles/ReportsMap.css";
+import "../styles/ReportsMap.scss";
 import axios from "axios";
 import io from "socket.io-client";
 
@@ -77,10 +77,10 @@ export default function ReportsMap() {
   }, [token, history]);
 
   return (
-    <>
+    <div className="reportsMap">
       <h1>HUMAN SIGHTINGS</h1>
       <Link to="/newreportmap">REPORT A HUMAN</Link>
       <div id="reports-map" ref={googleMapRef} />
-    </>
+    </div>
   );
 }
