@@ -8,7 +8,7 @@ import io from "socket.io-client";
 const markers = [];
 const infowindows = [];
 
-export default function NewReportMap() {
+export default function ReportsMap() {
   const history = useHistory();
   const googleMapRef = useRef(null);
   const token = localStorage.getItem("authentication-token");
