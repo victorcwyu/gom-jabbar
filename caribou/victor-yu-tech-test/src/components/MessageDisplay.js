@@ -1,5 +1,6 @@
 import React from "react";
 import MessageContent from "./MessageContent";
+import "../styles/MessageDisplay.scss";
 
 export default function MessageDisplay({ messages }) {
   return (

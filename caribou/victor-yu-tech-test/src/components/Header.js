@@ -16,27 +16,30 @@ export default function Header() {
 
   return (
     <nav>
-      <div className="navBar">
-        {userData.token && (
-          <Link className="nav-item" to="/">
-            Home
-          </Link>
-        )}
-        {userData.token && (
-          <button className="navButton" onClick={handleLogOut}>
-            Log Out
-          </button>
-        )}
-        {!userData.token && (
-          <Link className="nav-item" to="/login">
-            <p>Login</p>
-          </Link>
-        )}
-        {!userData.token && (
-          <Link className="nav-item" to="/signup">
-            <p>Sign Up</p>
-          </Link>
-        )}
+      <div className="nav-bar">
+        <p>Inter-Human-Caribou Harmony (IHCH) Application</p>
+        <div className="nav-links">
+          {userData.token && (
+            <Link className="nav-item" to="/">
+              Home
+            </Link>
+          )}
+          {userData.token && (
+            <button className="nav-button" onClick={handleLogOut}>
+              Log Out
+            </button>
+          )}
+          {!userData.token && (
+            <Link className="nav-item" to="/login">
+              <p>Login</p>
+            </Link>
+          )}
+          {!userData.token && (
+            <Link className="nav-item" to="/signup">
+              <p>Sign Up</p>
+            </Link>
+          )}
+        </div>
       </div>
     </nav>
   );
