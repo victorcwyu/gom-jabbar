@@ -5,7 +5,6 @@ import "../styles/Header.scss";
 
 export default function Header() {
   const { userData, setUserData } = useContext(UserContext);
-  const user = userData.user.username;
   const history = useHistory();
 
   const handleLogOut = (e) => {
@@ -22,9 +21,9 @@ export default function Header() {
           <p>Inter-Human-Caribou Harmony (IHCH) Application</p>
         </Link>
         <div className="nav-links">
-          {userData.token && (
+          {userData.token && userData.user.username && (
             <button className="nav-button" onClick={handleLogOut}>
-              Logout {user}
+              Logout {userData.user.username}
             </button>
           )}
           {!userData.token && (
