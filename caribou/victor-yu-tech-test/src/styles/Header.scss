@@ -7,6 +7,10 @@ nav {
     justify-content: space-between;
     align-items: center;
     padding: 0 1rem;
+    .nav-home {
+      text-decoration: none;
+      color: white;
+    }
     .nav-links {
       display: flex;
       align-items: center;
