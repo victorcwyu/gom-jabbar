@@ -5,21 +5,15 @@ import "../styles/Landing.scss";
 
 export default function Landing() {
   return (
-    <div className="pageContainer">
+    <>
       <div className="wrapper">
         <h1>Welcome to the Inter-Human-Caribou Harmony (IHCH) Application!</h1>
         <div className="landingLinks">
-          <div className="link">
-            <h2>New here?</h2>
-            <Link to="/signup">Sign Up</Link>
-          </div>
-          <div className="link">
-            <h2>Have an account?</h2>
-            <Link to="/login">Log In</Link>
-          </div>
+          <Link to="/signup">New here?</Link>
+          <Link to="/login">Have an account?</Link>
         </div>
       </div>
       <Footer />
-    </div>
+    </>
   );
 }
