@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Footer from "./Footer";
 import "../styles/Landing.scss";
 
 export default function Landing() {
@@ -18,14 +19,7 @@ export default function Landing() {
           </div>
         </div>
       </div>
-      <footer>
-        <div className="footerWrapper">
-          <p>© {new Date().getFullYear()}, Built by Victor Yu</p>
-          <a href="https://unsplash.com/photos/o78epm7JJCI?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink">
-            Photo by Arseny Togulev on Unsplash
-          </a>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
