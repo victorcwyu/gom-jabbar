@@ -9,10 +9,14 @@
   input,
   button {
     margin-bottom: 1rem;
+  }
+  input {
+    text-align: center;
+  }
+  button {
     cursor: grab;
   }
   .search-results {
-    margin-top: 2rem;
     display: flex;
     flex-direction: column;
     align-items: center;
