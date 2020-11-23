@@ -59,7 +59,7 @@ export default function NewReport() {
     <>
       <Header />
       <div className="reportWrapper">
-        <h1>Confirmed human sighting at:</h1>
+        <h1>Confirmed human spotting at:</h1>
         <h2>latitude: {lat}</h2>
         <h2>longitude: {lng}</h2>
         <h3>Please provide a trash level (1-10)</h3>

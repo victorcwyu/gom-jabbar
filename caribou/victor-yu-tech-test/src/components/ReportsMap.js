@@ -56,10 +56,10 @@ export default function ReportsMap() {
             map: map,
           });
           infowindows[i] = new window.google.maps.InfoWindow({
-            content: `<h3 style="text-align:center;">Human sighted</h3>
-            <p style="text-align:center;">latitude: ${report[0].lat}</p>
-            <p style="text-align:center;">longitude: ${report[0].lng}</p>
-            <p style="text-align:center;">trash level: ${report[1]}</p>
+            content: `<h3 style="text-align:center;">Human spotted at:</h3>
+            <h4 style="text-align:center;">latitude: ${report[0].lat}</h4>
+            <h4 style="text-align:center;">longitude: ${report[0].lng}</h4>
+            <h4 style="text-align:center;">trash level: ${report[1]}</h4>
             `,
           });
           // open an infowindow when the marker is clicked
