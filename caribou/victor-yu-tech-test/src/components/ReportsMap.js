@@ -56,9 +56,10 @@ export default function ReportsMap() {
             map: map,
           });
           infowindows[i] = new window.google.maps.InfoWindow({
-            content: `<b>Sighting at: ${report[0].lat}, ${report[0].lng}</b>
-              <br>
-              trash level: ${report[1]}
+            content: `<h3 style="text-align:center;">Human sighted</h3>
+            <p style="text-align:center;">latitude: ${report[0].lat}</p>
+            <p style="text-align:center;">longitude: ${report[0].lng}</p>
+            <p style="text-align:center;">trash level: ${report[1]}</p>
             `,
           });
           // open an infowindow when the marker is clicked
