@@ -54,11 +54,11 @@ export default function NewReport() {
   };
 
   return (
-    <div className="reportWrapper">
+    <div className="report-wrapper">
       <h1>Confirmed human spotting at:</h1>
       <h2>latitude: {lat}</h2>
       <h2>longitude: {lng}</h2>
-      <h3>Please provide a trash level (1-10)</h3>
+      <h2>Please provide a trash level (1-10)</h2>
       <form autoComplete="off" onSubmit={submitReport}>
         <input
           value={level}

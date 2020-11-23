@@ -1,5 +1,5 @@
-.reportWrapper {
-  width: 35%;
+.report-wrapper {
+  width: 37.5%;
   margin: 5rem auto 0;
   background-color: rgba(255, 255, 255, 0.8);
   text-align: center;
@@ -29,5 +29,60 @@
         color: white;
       }
     }
+  }
+}
+
+@media (max-width: 1300px) {
+  .report-wrapper {
+    width: 42.5%;
+  }
+}
+
+@media (max-width: 1150px) {
+  .report-wrapper {
+    width: 47.5%;
+  }
+}
+
+@media (max-width: 1000px) {
+  .report-wrapper {
+    width: 55%;
+  }
+}
+
+@media (max-width: 900px) {
+  .report-wrapper {
+    width: 65%;
+  }
+}
+
+@media (max-width: 768px) {
+  .report-wrapper {
+    width: 67.5%;
+    form {
+      input {
+        width: 7.5%;
+      }
+      button {
+        width: 30%;
+      }
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .report-wrapper {
+    width: 65%;
+  }
+  form {
+    input {
+      width: 10%;
+    }
+  }
+}
+
+@media (max-width: 400px) {
+  .signup-wrapper {
+    width: 100%;
   }
 }
