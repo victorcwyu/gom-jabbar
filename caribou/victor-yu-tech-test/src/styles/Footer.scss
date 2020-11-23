@@ -37,3 +37,10 @@ footer {
     font-size: 0.25rem;
   }
 }
+
+@media (max-width: 400px) {
+  p,
+  a {
+    font-size: 0.15rem;
+  }
+}

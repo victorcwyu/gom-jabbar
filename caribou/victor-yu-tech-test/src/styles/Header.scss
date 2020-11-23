@@ -67,3 +67,9 @@ nav {
     font-size: 0.25rem;
   }
 }
+
+@media (max-width: 400px) {
+  a {
+    font-size: 0.15rem;
+  }
+}
