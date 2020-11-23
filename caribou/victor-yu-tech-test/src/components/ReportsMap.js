@@ -77,9 +77,13 @@ export default function ReportsMap() {
   }, [token, history]);
 
   return (
-    <div className="reportsMap">
-      <h1>HUMAN SIGHTINGS</h1>
-      <Link to="/newreportmap">REPORT A HUMAN</Link>
+    <div className="reports-map">
+      <div className="reports-map-header">
+        <h1>HUMAN SIGHTINGS</h1>
+        <Link className="report-link" to="/newreportmap">
+          <p>REPORT A HUMAN SIGHTING</p>
+        </Link>
+      </div>
       <div id="reports-map" ref={googleMapRef} />
     </div>
   );
