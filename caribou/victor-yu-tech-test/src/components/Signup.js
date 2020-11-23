@@ -3,8 +3,6 @@ import UserContext from "../context/UserContext";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import "../styles/Signup.scss";
-import Header from "./Header";
-import Footer from "./Footer";
 
 export default function Signup() {
   const [userInfo, setUserInfo] = useState({
@@ -80,51 +78,45 @@ export default function Signup() {
   };
 
   return (
-    <>
-      <Header />
-      <div className="signupWrapper">
-        <h1>Create a new account</h1>
-        <form autoComplete="off" onSubmit={handleSubmit}>
-          <input
-            id="username"
-            placeholder="username (min. 3 characters)"
-            type="text"
-            value={userInfo.username}
-            onChange={(e) =>
-              setUserInfo({ ...userInfo, username: e.target.value })
-            }
-          />
-          <input
-            id="email"
-            placeholder="email"
-            type="text"
-            value={userInfo.email}
-            onChange={(e) =>
-              setUserInfo({ ...userInfo, email: e.target.value })
-            }
-          />
-          <input
-            id="password"
-            placeholder="password (min. 3 characters)"
-            type="text"
-            value={userInfo.password}
-            onChange={(e) =>
-              setUserInfo({ ...userInfo, password: e.target.value })
-            }
-          />
-          <input
-            id="confirmPassword"
-            placeholder="confirm password"
-            type="text"
-            value={userInfo.confirmPassword}
-            onChange={(e) =>
-              setUserInfo({ ...userInfo, confirmPassword: e.target.value })
-            }
-          />
-          <button type="submit">Sign up</button>
-        </form>
-      </div>
-      <Footer />
-    </>
+    <div className="signupWrapper">
+      <h1>Create a new account</h1>
+      <form autoComplete="off" onSubmit={handleSubmit}>
+        <input
+          id="username"
+          placeholder="username (min. 3 characters)"
+          type="text"
+          value={userInfo.username}
+          onChange={(e) =>
+            setUserInfo({ ...userInfo, username: e.target.value })
+          }
+        />
+        <input
+          id="email"
+          placeholder="email"
+          type="text"
+          value={userInfo.email}
+          onChange={(e) => setUserInfo({ ...userInfo, email: e.target.value })}
+        />
+        <input
+          id="password"
+          placeholder="password (min. 3 characters)"
+          type="text"
+          value={userInfo.password}
+          onChange={(e) =>
+            setUserInfo({ ...userInfo, password: e.target.value })
+          }
+        />
+        <input
+          id="confirmPassword"
+          placeholder="confirm password"
+          type="text"
+          value={userInfo.confirmPassword}
+          onChange={(e) =>
+            setUserInfo({ ...userInfo, confirmPassword: e.target.value })
+          }
+        />
+        <button type="submit">Sign up</button>
+      </form>
+    </div>
   );
 }

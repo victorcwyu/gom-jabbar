@@ -3,8 +3,6 @@ import { useHistory } from "react-router-dom";
 import UserContext from "../context/UserContext";
 import { initializeGoogleMap } from "../helpers/helpers.js";
 import "../styles/NewReportMap.scss";
-import Footer from "./Footer";
-import Header from "./Header";
 
 const noDisplay = {
   display: "none",
@@ -83,35 +81,31 @@ export default function NewReportMap() {
   };
 
   return (
-    <>
-      <Header />
-      <div className="new-report-map">
-        <h1>Where did you spot the human?</h1>
-        <div className="home-map" ref={googleMapRef} />
-        <div style={noDisplay}>
-          <div id="info-content">
-            <h2>Human spotting at:</h2>
-            <table>
-              <tbody>
-                <tr id="lat-row">
-                  <td>latitude:</td>
-                  <td id="iw-lat"></td>
-                </tr>
-                <tr id="long-row">
-                  <td>longitude:</td>
-                  <td id="iw-lng"></td>
-                </tr>
-                <tr>
-                  <td>
-                    <button onClick={submitReport}>Submit Report</button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+    <div className="new-report-map">
+      <h1>Where did you spot the human?</h1>
+      <div className="home-map" ref={googleMapRef} />
+      <div style={noDisplay}>
+        <div id="info-content">
+          <h2>Human spotting at:</h2>
+          <table>
+            <tbody>
+              <tr id="lat-row">
+                <td>latitude:</td>
+                <td id="iw-lat"></td>
+              </tr>
+              <tr id="long-row">
+                <td>longitude:</td>
+                <td id="iw-lng"></td>
+              </tr>
+              <tr>
+                <td>
+                  <button onClick={submitReport}>Submit Report</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
-      <Footer />
-    </>
+    </div>
   );
 }

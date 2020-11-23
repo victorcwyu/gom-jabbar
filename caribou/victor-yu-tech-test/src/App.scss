@@ -1,5 +1,56 @@
+// body {
+//   background-image: url(./assets/homeImage.jpg);
+//   background-size: cover;
+//   height: 100%;
+// }
+
+// html,
+// body {
+//   margin: 0;
+//   height: 100%;
+//   min-height: 100%;
+// }
+
+// body {
+//   display: flex;
+//   flex-direction: column;
+//   background-image: url(./assets/homeImage.jpg);
+//   background-size: cover;
+// }
+
+// header,
+// footer {
+//   flex: none;
+// }
+
+// main {
+//   overflow-y: scroll;
+//   -webkit-overflow-scrolling: touch;
+//   flex: auto;
+// }
+
+* {
+  box-sizing: border-box;
+}
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+  position: relative;
+}
+
 body {
   background-image: url(./assets/homeImage.jpg);
   background-size: cover;
-  height: 100%;
+}
+
+#main-container {
+  min-height: 100vh;
+  overflow: hidden;
+  display: block;
+  position: relative;
+  padding-bottom: 90px;
 }

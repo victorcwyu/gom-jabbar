@@ -1,19 +1,17 @@
-.homeWrapper {
-  .contactsAndMapContainer {
-    margin-top: 2.5rem;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    button {
-      border: 1px solid black;
-      border-radius: 5px;
-      &:hover {
-        background-color: purple;
-        color: white;
-      }
+.contactsAndMapContainer {
+  margin-top: 2.5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  button {
+    border: 1px solid black;
+    border-radius: 5px;
+    &:hover {
+      background-color: purple;
+      color: white;
     }
-    h2 {
-      margin-top: 1rem;
-    }
+  }
+  h2 {
+    margin-top: 1rem;
   }
 }

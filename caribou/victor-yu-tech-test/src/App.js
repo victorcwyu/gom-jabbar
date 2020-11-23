@@ -11,6 +11,8 @@ import "./App.scss";
 import NewReportMap from "./components/NewReportMap";
 import NewReport from "./components/NewReport";
 import ReportsMap from "./components/ReportsMap";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 const GOOGLE_MAP_API_KEY = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
 
@@ -71,22 +73,28 @@ function App() {
   return (
     <Router>
       <UserContext.Provider value={value}>
-        <Switch>
-          {userData.token === null && (
-            <Route path="/" exact component={Landing} />
-          )}
-          {userData.token !== null && <Route path="/" exact component={Home} />}
-          <Route path="/signup" exact component={Signup} />
-          <Route path="/login" exact component={Login} />
-          <Route path="/messages" exact component={Messages} />
-          {userData.googleMapsLoaded === true && (
-            <Route path="/newreportmap" exact component={NewReportMap} />
-          )}
-          <Route path="/newreport" exact component={NewReport} />
-          {userData.googleMapsLoaded === true && (
-            <Route path="/reportsmap" exact component={ReportsMap} />
-          )}
-        </Switch>
+        <div id="main-container">
+          <Header />
+          <Switch>
+            {userData.token === null && (
+              <Route path="/" exact component={Landing} />
+            )}
+            {userData.token !== null && (
+              <Route path="/" exact component={Home} />
+            )}
+            <Route path="/signup" exact component={Signup} />
+            <Route path="/login" exact component={Login} />
+            <Route path="/messages" exact component={Messages} />
+            {userData.googleMapsLoaded === true && (
+              <Route path="/newreportmap" exact component={NewReportMap} />
+            )}
+            <Route path="/newreport" exact component={NewReport} />
+            {userData.googleMapsLoaded === true && (
+              <Route path="/reportsmap" exact component={ReportsMap} />
+            )}
+          </Switch>
+          <Footer />
+        </div>
       </UserContext.Provider>
     </Router>
   );

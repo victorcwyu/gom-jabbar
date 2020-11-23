@@ -4,9 +4,7 @@ import { useHistory } from "react-router-dom";
 import io from "socket.io-client";
 import MessageDisplay from "./MessageDisplay";
 import axios from "axios";
-import Footer from "./Footer";
 import "../styles/Messages.scss";
-import Header from "./Header";
 
 let socket;
 
@@ -103,27 +101,23 @@ export default function Messages() {
   };
 
   return (
-    <>
-      <Header />
-      <div className="messages-wrapper">
-        {userData.contactInformation && (
-          <h1>
-            Conversation with{" "}
-            <span>{userData.contactInformation.contactName}</span>
-          </h1>
-        )}
-        <MessageDisplay messages={messages} />
-        <form>
-          <input
-            placeholder="Enter your message"
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-            onKeyPress={(e) => (e.key === "Enter" ? sendMessage(e) : null)}
-          />
-          <button onClick={sendMessage}>Submit</button>
-        </form>
-      </div>
-      <Footer />
-    </>
+    <div className="messages-wrapper">
+      {userData.contactInformation && (
+        <h1>
+          Conversation with{" "}
+          <span>{userData.contactInformation.contactName}</span>
+        </h1>
+      )}
+      <MessageDisplay messages={messages} />
+      <form>
+        <input
+          placeholder="Enter your message"
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+          onKeyPress={(e) => (e.key === "Enter" ? sendMessage(e) : null)}
+        />
+        <button onClick={sendMessage}>Submit</button>
+      </form>
+    </div>
   );
 }

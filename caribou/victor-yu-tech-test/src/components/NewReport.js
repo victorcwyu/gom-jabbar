@@ -3,8 +3,6 @@ import UserContext from "../context/UserContext";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import io from "socket.io-client";
-import Header from "./Header";
-import Footer from "./Footer";
 import "../styles/NewReport.scss";
 
 export default function NewReport() {
@@ -56,24 +54,20 @@ export default function NewReport() {
   };
 
   return (
-    <>
-      <Header />
-      <div className="reportWrapper">
-        <h1>Confirmed human spotting at:</h1>
-        <h2>latitude: {lat}</h2>
-        <h2>longitude: {lng}</h2>
-        <h3>Please provide a trash level (1-10)</h3>
-        <form autoComplete="off" onSubmit={submitReport}>
-          <input
-            value={level}
-            onChange={(e) => setLevel(e.target.value)}
-            onKeyPress={(e) => (e.key === "Enter" ? submitReport(e) : null)}
-          />
-          <button type="submit">Submit Report</button>
-          <button onClick={handleCancel}>Cancel</button>
-        </form>
-      </div>
-      <Footer />
-    </>
+    <div className="reportWrapper">
+      <h1>Confirmed human spotting at:</h1>
+      <h2>latitude: {lat}</h2>
+      <h2>longitude: {lng}</h2>
+      <h3>Please provide a trash level (1-10)</h3>
+      <form autoComplete="off" onSubmit={submitReport}>
+        <input
+          value={level}
+          onChange={(e) => setLevel(e.target.value)}
+          onKeyPress={(e) => (e.key === "Enter" ? submitReport(e) : null)}
+        />
+        <button type="submit">Submit Report</button>
+        <button onClick={handleCancel}>Cancel</button>
+      </form>
+    </div>
   );
 }
