@@ -37,10 +37,12 @@ export default function ContactInformation({ contactId, contactName }) {
   };
 
   return (
-    <>
-      <h2>{contactName}</h2>
-      <button onClick={renderMessages}>Messages</button>
-      <button onClick={handleDelete}>Remove</button>
-    </>
+    <div className="contact-information-wrapper">
+      <h3>{contactName}</h3>
+      <div className="contact-button-wrapper">
+        <button onClick={renderMessages}>Messages</button>
+        <button onClick={handleDelete}>Remove</button>
+      </div>
+    </div>
   );
 }

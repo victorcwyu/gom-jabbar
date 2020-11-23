@@ -20,7 +20,7 @@ export default function Contacts() {
     <>
       {userData.user.contacts[0] !== undefined && (
         <div className="contactsWrapper">
-          <h1>Contacts</h1>
+          <h2>Contacts</h2>
           <ul>{contacts}</ul>
         </div>
       )}

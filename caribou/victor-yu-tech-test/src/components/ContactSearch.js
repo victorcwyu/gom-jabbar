@@ -78,16 +78,15 @@ export default function ContactSearch() {
           onChange={(e) => setInput(e.target.value)}
         />
         {!searchData && <button onClick={handleSearch}>Search</button>}
+        {searchData && (
+          <div className="search-results">
+            <button onClick={handleAddContact}>
+              Add {searchData.username} to your Contacts
+            </button>
+            <button onClick={handleCancel}>Cancel</button>
+          </div>
+        )}
       </div>
-      {searchData && (
-        <div className="searchResults">
-          <h2>Search Results</h2>
-          <button onClick={handleAddContact}>
-            Add {searchData.username} to your Contacts
-          </button>
-          <button onClick={handleCancel}>Cancel</button>
-        </div>
-      )}
     </>
   );
 }

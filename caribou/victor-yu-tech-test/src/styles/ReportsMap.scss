@@ -8,12 +8,10 @@
     align-items: center;
     background-color: rgba(255, 255, 255, 0.8);
     border-radius: 5px;
-    padding: 1rem;
-    h1 {
-      margin: 0;
-    }
-    .report-link {
-      text-decoration: none;
+    padding: 0 1rem;
+    button {
+      margin-bottom: 1rem;
+      cursor: grab;
     }
   }
   #reports-map {

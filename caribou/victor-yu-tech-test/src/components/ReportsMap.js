@@ -79,9 +79,9 @@ export default function ReportsMap() {
   return (
     <div className="reports-map">
       <div className="reports-map-header">
-        <h1>HUMAN SIGHTINGS</h1>
+        <h2>Human Sightings</h2>
         <Link className="report-link" to="/newreportmap">
-          <p>REPORT A HUMAN SIGHTING</p>
+          <button>Report a human</button>
         </Link>
       </div>
       <div id="reports-map" ref={googleMapRef} />
