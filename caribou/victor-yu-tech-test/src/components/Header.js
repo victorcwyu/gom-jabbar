@@ -18,7 +18,7 @@ export default function Header() {
     <nav>
       <div className="nav-bar">
         <Link className="nav-home" to="/">
-          <h1>Inter-Human-Caribou Harmony (IHCH) Application</h1>
+          <h2>Inter-Human-Caribou Harmony (IHCH) Application</h2>
         </Link>
         <div className="nav-links">
           {userData.token && userData.user.username && (
