@@ -1,5 +1,5 @@
 .loginWrapper {
-  width: 15%;
+  width: 22.5%;
   margin: 5rem auto 0;
   background-color: rgba(255, 255, 255, 0.8);
   text-align: center;
@@ -27,5 +27,29 @@
         color: white;
       }
     }
+  }
+}
+
+@media (max-width: 768px) {
+  .loginWrapper {
+    width: 30%;
+  }
+}
+
+@media (max-width: 600px) {
+  .loginWrapper {
+    width: 37.5%;
+  }
+}
+
+@media (max-width: 500px) {
+  .loginWrapper {
+    width: 42.5%;
+  }
+}
+
+@media (max-width: 400px) {
+  .loginWrapper {
+    width: 47.5%;
   }
 }
