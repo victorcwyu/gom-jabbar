@@ -1,6 +1,9 @@
 nav {
   h2 {
     margin: 1rem 0;
+    &:hover {
+      color: purple;
+    }
   }
   background-color: black;
   .nav-bar {
@@ -21,11 +24,8 @@ nav {
         margin-right: 1rem;
         text-decoration: none;
         color: white;
-        padding: 2px;
         &:hover {
-          color: white;
-          background-color: purple;
-          border-radius: 5px;
+          color: purple;
         }
       }
       .nav-button {
