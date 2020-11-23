@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 40%;
   margin: 2.5rem auto 0;
   h1 {
     background-color: rgba(255, 255, 255, 0.8);
@@ -28,6 +27,9 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      #info-title {
+        font-weight: bold;
+      }
       button {
         border: 1px solid black;
         border-radius: 5px;
@@ -36,6 +38,42 @@
           color: white;
         }
       }
+    }
+  }
+}
+
+@media (max-width: 680px) {
+  .new-report-map {
+    .home-map {
+      height: 420px;
+      width: 420px;
+    }
+  }
+}
+
+@media (max-width: 501px) {
+  .new-report-map {
+    .home-map {
+      height: 400px;
+      width: 400px;
+    }
+  }
+}
+
+@media (max-width: 451px) {
+  .new-report-map {
+    .home-map {
+      height: 320px;
+      width: 320px;
+    }
+  }
+}
+
+@media (max-width: 375px) {
+  .new-report-map {
+    .home-map {
+      height: 300px;
+      width: 300px;
     }
   }
 }

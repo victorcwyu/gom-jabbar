@@ -86,9 +86,11 @@ export default function NewReportMap() {
       <div className="home-map" ref={googleMapRef} />
       <div style={noDisplay}>
         <div id="info-content">
-          <h2>Human spotting at:</h2>
           <table>
             <tbody>
+              <tr>
+                <td id="info-title">Human spotted at:</td>
+              </tr>
               <tr id="lat-row">
                 <td>latitude:</td>
                 <td id="iw-lat"></td>
