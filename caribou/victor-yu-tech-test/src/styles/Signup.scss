@@ -1,4 +1,4 @@
-.signupWrapper {
+.signup-wrapper {
   width: 27.5%;
   margin: 5rem auto 0;
   background-color: rgba(255, 255, 255, 0.8);
@@ -28,5 +28,41 @@
         color: white;
       }
     }
+  }
+}
+
+@media (max-width: 1300px) {
+  .signup-wrapper {
+    width: 35%;
+  }
+}
+
+@media (max-width: 1000px) {
+  .signup-wrapper {
+    width: 47.5%;
+  }
+}
+
+@media (max-width: 768px) {
+  .signup-wrapper {
+    width: 55%;
+  }
+}
+
+@media (max-width: 600px) {
+  .signup-wrapper {
+    width: 62.5%;
+  }
+}
+
+@media (max-width: 500px) {
+  .signup-wrapper {
+    width: 65%;
+  }
+}
+
+@media (max-width: 400px) {
+  .signup-wrapper {
+    width: 100%;
   }
 }

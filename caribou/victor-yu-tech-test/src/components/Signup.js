@@ -78,7 +78,7 @@ export default function Signup() {
   };
 
   return (
-    <div className="signupWrapper">
+    <div className="signup-wrapper">
       <h1>Create a new account</h1>
       <form autoComplete="off" onSubmit={handleSubmit}>
         <input
