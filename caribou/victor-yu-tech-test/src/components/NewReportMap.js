@@ -29,7 +29,6 @@ export default function NewReportMap() {
         });
         // drops pin on map
         const dropPin = (event) => {
-          map.setCenter(event.latLng);
           const pin = new window.google.maps.Marker({
             draggable: true,
             position: event.latLng,
