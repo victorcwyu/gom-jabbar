@@ -7,12 +7,12 @@ import Signup from "./components/Signup";
 import Login from "./components/Login";
 import Home from "./components/Home";
 import Messages from "./components/Messages";
-import "./App.scss";
 import NewReportMap from "./components/NewReportMap";
 import NewReport from "./components/NewReport";
 import ReportsMap from "./components/ReportsMap";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import "./App.scss";
 
 const GOOGLE_MAP_API_KEY = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
 

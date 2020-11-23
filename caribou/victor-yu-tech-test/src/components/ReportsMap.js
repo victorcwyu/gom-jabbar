@@ -1,9 +1,9 @@
 import React, { useEffect, useRef } from "react";
 import { useHistory, Link } from "react-router-dom";
 import { initializeGoogleMap } from "../helpers/helpers.js";
-import "../styles/ReportsMap.scss";
 import axios from "axios";
 import io from "socket.io-client";
+import "../styles/ReportsMap.scss";
 
 const markers = [];
 const infowindows = [];
