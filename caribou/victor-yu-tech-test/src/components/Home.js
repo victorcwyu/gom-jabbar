@@ -1,5 +1,6 @@
 import React from "react";
 import Contacts from "./Contacts";
+import ContactSearch from "./ContactSearch";
 import ReportsMap from "./ReportsMap";
 import "../styles/Home.scss";
 import Header from "./Header";
@@ -12,6 +13,7 @@ export default function Home() {
       <div className="homeWrapper">
         <div className="contactsAndMapContainer">
           <Contacts />
+          <ContactSearch />
           <ReportsMap />
         </div>
       </div>
