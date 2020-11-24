@@ -16,12 +16,23 @@ export default function Contacts() {
     );
   });
 
+  let contactClass;
+  const numberOfContacts = contacts.length;
+
+  if (numberOfContacts === 1) {
+    contactClass = "one-contact-wrapper";
+  } else {
+    contactClass = "contacts-wrapper";
+  }
+
   return (
     <>
       {userData.user.contacts[0] !== undefined && (
-        <div className="contactsWrapper">
+        <div className="contacts-plus-title-wrapper">
           <h2>Contacts</h2>
-          <ul>{contacts}</ul>
+          <div className={contactClass}>
+            <ul>{contacts}</ul>
+          </div>
         </div>
       )}
     </>

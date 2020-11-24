@@ -3,13 +3,14 @@
   border-radius: 5px;
   border: solid black 1px;
   padding: 1rem;
-  margin-bottom: 1rem;
+  margin-right: 1rem;
   h3 {
     text-align: center;
   }
   .contact-button-wrapper {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     button {
       margin-bottom: 1rem;
       cursor: grab;

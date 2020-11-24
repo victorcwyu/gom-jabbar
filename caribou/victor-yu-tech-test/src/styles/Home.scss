@@ -1,8 +1,15 @@
 .contactsAndMapContainer {
+  width: 100%;
   margin-top: 2.5rem;
   display: flex;
-  flex-direction: row;
   justify-content: space-evenly;
+  .contacts-plus-search-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 45%;
+  }
   button {
     border: 1px solid black;
     border-radius: 5px;
@@ -13,5 +20,35 @@
   }
   h2 {
     margin-top: 1rem;
+  }
+}
+
+@media (max-width: 1100px) {
+  .contactsAndMapContainer {
+    .contacts-plus-search-wrapper {
+      width: 40%;
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .contactsAndMapContainer {
+    .contacts-plus-search-wrapper {
+      width: 45%;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .contactsAndMapContainer {
+    h2 {
+      font-size: 1.5rem;
+    }
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .contacts-plus-search-wrapper {
+      width: 75%;
+    }
   }
 }
