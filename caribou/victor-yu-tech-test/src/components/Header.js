@@ -1,11 +1,12 @@
 import React, { useContext } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, useLocation } from "react-router-dom";
 import UserContext from "../context/UserContext";
 import "../styles/Header.scss";
 
 export default function Header() {
   const { userData, setUserData } = useContext(UserContext);
   const history = useHistory();
+  const location = useLocation();
 
   const handleLogOut = (e) => {
     e.preventDefault();
@@ -19,11 +20,13 @@ export default function Header() {
       <div className="nav-bar">
         <h2>Inter-Human-Caribou Harmony (IHCH) Application</h2>
         <div className="nav-links">
-          {userData.token && userData.user.username && (
-            <Link className="nav-item" to="/">
-              Home
-            </Link>
-          )}
+          {userData.token &&
+            userData.user.username &&
+            location.pathname !== "/" && (
+              <Link className="nav-item" to="/">
+                Home
+              </Link>
+            )}
           {userData.token && userData.user.username && (
             <button className="nav-button" onClick={handleLogOut}>
               Logout {userData.user.username}
