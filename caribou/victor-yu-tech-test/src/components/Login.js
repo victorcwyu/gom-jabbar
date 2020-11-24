@@ -49,18 +49,18 @@ export default function Login() {
     <div className="loginWrapper">
       <h1>Login</h1>
       <form autoComplete="off" onSubmit={handleSubmit}>
+        <label for="username">username</label>
         <input
           id="username"
-          placeholder="username"
           type="text"
           value={userInfo.username}
           onChange={(e) =>
             setUserInfo({ ...userInfo, username: e.target.value })
           }
         />
+        <label for="password">password</label>
         <input
           id="password"
-          placeholder="password"
           type="text"
           value={userInfo.password}
           onChange={(e) =>
