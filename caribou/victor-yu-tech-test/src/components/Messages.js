@@ -110,8 +110,8 @@ export default function Messages() {
       )}
       <MessageDisplay messages={messages} />
       <form>
+        <label for="message">Enter your message</label>
         <input
-          placeholder="Enter your message"
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           onKeyPress={(e) => (e.key === "Enter" ? sendMessage(e) : null)}
