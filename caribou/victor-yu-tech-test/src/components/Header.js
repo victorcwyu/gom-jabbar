@@ -17,10 +17,13 @@ export default function Header() {
   return (
     <nav>
       <div className="nav-bar">
-        <Link className="nav-home" to="/">
-          <h2>Inter-Human-Caribou Harmony (IHCH) Application</h2>
-        </Link>
+        <h2>Inter-Human-Caribou Harmony (IHCH) Application</h2>
         <div className="nav-links">
+          {userData.token && userData.user.username && (
+            <Link className="nav-item" to="/">
+              Home
+            </Link>
+          )}
           {userData.token && userData.user.username && (
             <button className="nav-button" onClick={handleLogOut}>
               Logout {userData.user.username}
