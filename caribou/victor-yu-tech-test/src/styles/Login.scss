@@ -1,4 +1,4 @@
-.loginWrapper {
+.login-wrapper {
   width: 22.5%;
   margin: 5rem auto 0;
   background-color: rgba(255, 255, 255, 0.8);
@@ -31,25 +31,25 @@
 }
 
 @media (max-width: 768px) {
-  .loginWrapper {
+  .login-wrapper {
     width: 30%;
   }
 }
 
 @media (max-width: 600px) {
-  .loginWrapper {
+  .login-wrapper {
     width: 37.5%;
   }
 }
 
 @media (max-width: 500px) {
-  .loginWrapper {
+  .login-wrapper {
     width: 42.5%;
   }
 }
 
 @media (max-width: 400px) {
-  .loginWrapper {
+  .login-wrapper {
     width: 47.5%;
   }
 }

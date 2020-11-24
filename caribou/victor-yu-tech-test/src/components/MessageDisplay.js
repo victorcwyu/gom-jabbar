@@ -4,7 +4,7 @@ import "../styles/MessageDisplay.scss";
 
 export default function MessageDisplay({ messages }) {
   return (
-    <div className="display-container">
+    <div className="display-wrapper">
       <div className="display">
         {messages &&
           messages.messageHistory &&

@@ -3,7 +3,7 @@ import "../styles/Landing.scss";
 
 export default function Landing() {
   return (
-    <div className="landingWrapper">
+    <div className="landing-wrapper">
       <h1>Welcome to the Inter-Human-Caribou Harmony (IHCH) Application!</h1>
     </div>
   );

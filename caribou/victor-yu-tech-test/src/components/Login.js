@@ -46,7 +46,7 @@ export default function Login() {
   };
 
   return (
-    <div className="loginWrapper">
+    <div className="login-wrapper">
       <h1>Login</h1>
       <form autoComplete="off" onSubmit={handleSubmit}>
         <label for="username">username</label>
