@@ -58,9 +58,10 @@ export default function NewReport() {
       <h1>Confirmed human spotting at:</h1>
       <h2>latitude: {lat}</h2>
       <h2>longitude: {lng}</h2>
-      <h2>Please provide a trash level (1-10)</h2>
       <form autoComplete="off" onSubmit={submitReport}>
+        <label for="report">Please provide a trash level (1-10)</label>
         <input
+          id="report"
           value={level}
           onChange={(e) => setLevel(e.target.value)}
           onKeyPress={(e) => (e.key === "Enter" ? submitReport(e) : null)}
