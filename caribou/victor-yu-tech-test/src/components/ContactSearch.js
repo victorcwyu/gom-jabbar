@@ -12,24 +12,27 @@ export default function ContactSearch() {
     e.preventDefault();
     const token = localStorage.getItem("authentication-token");
     try {
-      axios
-        .post(
-          "http://localhost:5000/findUser",
-          { username: input },
-          {
-            headers: {
-              "Authentication-Token": token,
-            },
-          }
-        )
-        .then((res) => {
-          setSearchData(res.data);
-        })
-        .catch((error) => {
-          const errorMessage = error.response.data.message;
-          alert(errorMessage);
-          setInput("");
-        });
+      if (input === "") {
+        alert("Please enter a username to search for!");
+      } else
+        axios
+          .post(
+            "http://localhost:5000/findUser",
+            { username: input },
+            {
+              headers: {
+                "Authentication-Token": token,
+              },
+            }
+          )
+          .then((res) => {
+            setSearchData(res.data);
+          })
+          .catch((error) => {
+            const errorMessage = error.response.data.message;
+            alert(errorMessage);
+            setInput("");
+          });
     } catch (error) {
       console.error(error);
     }
