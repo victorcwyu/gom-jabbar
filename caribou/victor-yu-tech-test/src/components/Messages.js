@@ -112,6 +112,7 @@ export default function Messages() {
       <form>
         <label for="message">Enter your message</label>
         <input
+          id="message"
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           onKeyPress={(e) => (e.key === "Enter" ? sendMessage(e) : null)}
