@@ -71,9 +71,9 @@ export default function ContactSearch() {
     <>
       <div className="search">
         <h2>Search Users</h2>
+        <label for="username">username</label>
         <input
           type="text"
-          placeholder="username"
           value={input}
           onChange={(e) => setInput(e.target.value)}
         />
