@@ -5,7 +5,16 @@ export default function Footer() {
   return (
     <footer>
       <div className="footerWrapper">
-        <p>© {new Date().getFullYear()}, Built by Victor Yu</p>
+        <p>
+          © {new Date().getFullYear()},{" "}
+          <a
+            href="https://victorcwyu.netlify.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Built by Victor Yu
+          </a>
+        </p>
         <a
           href="https://unsplash.com/photos/o78epm7JJCI?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink"
           target="_blank"
