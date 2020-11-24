@@ -1,70 +1,51 @@
-# Getting Started with Create React App
+# Inter-Human-Caribou Harmony (IHCH) Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The Inter-Human-Caribou Harmony (IHCH) Application is a MongoDB, Express, React.js and Node.js (MERN) stack application that allows eligible caribou to report human sightings and securely communicate with other caribou using the application. The application incorporates the Google Maps API for human sightings and Socket.IO for real-time communication, as well as real-time updates of human sightings. JSON Web Tokens and bcrypt are implemented in the application for authentication/security.
 
-## Available Scripts
+## Dependencies
 
-In the project directory, you can run:
+backend:
+"bcrypt": "^5.0.0",
+"cors": "^2.8.5",
+"dotenv": "^8.2.0",
+"express": "^4.17.1",
+"express-validator": "^6.6.1",
+"http": "0.0.1-security",
+"jsonwebtoken": "^8.5.1",
+"mongoose": "^5.10.10",
+"socket.io": "^3.0.1"
+
+frontend
+"axios": "^0.21.0",
+"sass": "^1.29.0",
+"socket.io-client": "^3.0.1",
+
+## Running The Application
+
+You will need to create a .env file in the backend directory, a .env.local file in the victor-yu-tech-test directory.
+The contents will be provided to you upon request (in this case, will be e-mailed to Bruno)!
+
+In the backend directory, begin by running:
+
+### `npm i`
+
+This installs the additional dependencies.
+
+Next run:
 
 ### `npm start`
 
-Runs the app in the development mode.\
+Starts the server.
+
+In the victor-yu-tech-test directory, begin by running:
+
+### `npm i`
+
+This installs the additional dependencies.
+
+Next run:
+
+### `npm start`
+
+Runs the app in the development mode.
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
