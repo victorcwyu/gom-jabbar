@@ -81,34 +81,34 @@ export default function Signup() {
     <div className="signup-wrapper">
       <h1>Create a new account</h1>
       <form autoComplete="off" onSubmit={handleSubmit}>
+        <label for="username">username (min. 3 characters)</label>
         <input
           id="username"
-          placeholder="username (min. 3 characters)"
           type="text"
           value={userInfo.username}
           onChange={(e) =>
             setUserInfo({ ...userInfo, username: e.target.value })
           }
         />
+        <label for="email">email</label>
         <input
           id="email"
-          placeholder="email"
           type="text"
           value={userInfo.email}
           onChange={(e) => setUserInfo({ ...userInfo, email: e.target.value })}
         />
+        <label for="password">password (min. 3 characters)</label>
         <input
           id="password"
-          placeholder="password (min. 3 characters)"
           type="text"
           value={userInfo.password}
           onChange={(e) =>
             setUserInfo({ ...userInfo, password: e.target.value })
           }
         />
+        <label for="confirmPassword">confirm password</label>
         <input
           id="confirmPassword"
-          placeholder="confirm password"
           type="text"
           value={userInfo.confirmPassword}
           onChange={(e) =>
