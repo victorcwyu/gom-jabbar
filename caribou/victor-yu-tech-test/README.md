@@ -4,21 +4,23 @@ The Inter-Human-Caribou Harmony (IHCH) Application is a MongoDB, Express, React.
 
 ## Dependencies
 
-backend:
-"bcrypt": "^5.0.0",
-"cors": "^2.8.5",
-"dotenv": "^8.2.0",
-"express": "^4.17.1",
-"express-validator": "^6.6.1",
-"http": "0.0.1-security",
-"jsonwebtoken": "^8.5.1",
-"mongoose": "^5.10.10",
-"socket.io": "^3.0.1"
+### Backend
 
-frontend
-"axios": "^0.21.0",
-"sass": "^1.29.0",
-"socket.io-client": "^3.0.1",
+- "bcrypt": "^5.0.0",
+- "cors": "^2.8.5",
+- "dotenv": "^8.2.0",
+- "express": "^4.17.1",
+- "express-validator": "^6.6.1",
+- "http": "0.0.1-security",
+- "jsonwebtoken": "^8.5.1",
+- "mongoose": "^5.10.10",
+- "socket.io": "^3.0.1"
+
+### Frontend
+
+- "axios": "^0.21.0",
+- "sass": "^1.29.0",
+- "socket.io-client": "^3.0.1",
 
 ## Running The Application
 
